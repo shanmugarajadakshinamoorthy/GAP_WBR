@@ -1,15 +1,31 @@
 import openai
 import pandas as pd
 import json
+import os
 
 # Load JSON data (historic trends)
 import re
-
 def extract_summary(text):
-    match = re.search(r"Summary:\n(.*)", text, re.DOTALL)
-    return match.group(1).strip() if match else None
+    # Define regex patterns for different summary formats
+    patterns = [
+        r"Summary:\s*(.*?)$",  # Case with "Summary:" in plain text
+        r"<Summary>(.*?)</Summary>",  # XML-like case
+        r"```Summary```\s*(.*?)$",  # Markdown-style case
+        r"<Output>\s*<Summary>(.*?)</Output>",  # Output wrapped summary
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, text, re.DOTALL)
+        if match:
+            return match.group(1).strip()
+    
+    return None
 
-def generate_summary_from_causal_link(summary, filtered_df):
+# def extract_summary(text):
+#     match = re.search(r"Summary:\n(.*)", text, re.DOTALL)
+#     return match.group(1).strip() if match else None
+
+def generate_summary_from_causal_link(summary, filtered_df, brand):
     """Compare trends and generate a business summary using LLM."""
     
 
@@ -45,7 +61,7 @@ Now Look at the inputs below
 
 
 <Data JSON>
-      {filtered_df[0]}
+      {filtered_df}
 
 </Data JSON>
 
@@ -106,21 +122,57 @@ Always mention the time frame of change like "vs LY" as seen in <Sample Summary>
     )
     
     summary = response.choices[0].message.content
-    with open("derived/final_summary.txt", "w", encoding="utf-8") as file:
-        file.write(summary)
+    with open(f"summary/{brand}_final_summary.txt", "w", encoding="utf-8") as file:
+        if summary is not None:
+            file.write(summary)
+        else:
+            file.write("")
 
     summary = extract_summary(summary)
-    with open("derived/edit_summary.txt", "w", encoding="utf-8") as file:
-        file.write(summary)
+    with open(f"edited_summary/{brand}_edit_summary.txt", "w", encoding="utf-8") as file:
+        if summary is not None:
+            file.write(summary)
+        else:
+            file.write("")
 
     print("JSON file saved successfully.")
     
 
 
-with open("derived/fil_data_causal_map.json", "r") as file:
-    map = json.load(file)
+# with open("derived/fil_data_causal_map.json", "r") as file:
+#     map = json.load(file)
 
-with open("derived/filtered_df.json", "r") as file:
-    filtered_df = json.load(file)
+# with open("derived/filtered_df.json", "r") as file:
+#     filtered_df = json.load(file)
 
-generate_summary_from_causal_link(map, filtered_df)
+# generate_summary_from_causal_link(map, filtered_df)
+
+def process_causal_maps(cm_folder, derived_folder):
+    cm_files = {f.split('_causal_map.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map.json')}
+    derived_files = {f.split('_filtered_data.json')[0]: os.path.join(derived_folder, f) for f in os.listdir(derived_folder) if f.endswith('_filtered_data.json')}
+    
+    common_brands = cm_files.keys() & derived_files.keys()
+
+    for brand in common_brands:
+        cm_file_path = cm_files[brand]
+        derived_file_path = derived_files[brand]
+
+
+
+        with open(cm_file_path, 'r') as cm_file:
+            causal_map = cm_file.read()
+        
+        with open(derived_file_path, 'r') as derived_file:
+            filtered_df = json.load(derived_file)
+        
+        generate_summary_from_causal_link(causal_map, filtered_df, brand)
+
+# Example usage
+cm_folder = "CM_filtered"
+derived_folder = "derived"
+
+
+os.makedirs("summary", exist_ok=True)
+os.makedirs("edited_summary", exist_ok=True)
+
+process_causal_maps(cm_folder, derived_folder)
