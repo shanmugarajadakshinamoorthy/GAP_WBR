@@ -1,11 +1,13 @@
 import openai
 import pandas as pd
 import json
+import re
+import os
 
 # Load JSON data (historic trends)
 
 
-def generate_causal_link(summary):
+def generate_causal_link(summary, brand_name):
     """Compare trends and generate a business summary using LLM."""
     
 
@@ -60,7 +62,7 @@ def generate_causal_link(summary):
     
     client = openai.OpenAI()
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a causal link creator summarizing business performance."},
             {"role": "user", "content": prompt}
@@ -68,15 +70,33 @@ def generate_causal_link(summary):
     )
     
     json_output = response.choices[0].message.content
-    with open("derived/redreated_causal_map.json", "w") as file:
-        file.write(json_output)
+    cleaned_text = re.sub(r"^```json|\n```$", "", json_output.strip(), flags=re.MULTILINE)
+
+    with open(f"recreated_CM/{brand_name}_recreated_CM.json", "w") as file:
+        file.write(cleaned_text)
 
     print("JSON file saved successfully.")
     
 
 
-with open("derived/edit_summary.txt", "r", encoding="utf-8") as file:
-    content = file.read()
+# with open("derived/edit_summary.txt", "r", encoding="utf-8") as file:
+#     content = file.read()
 
 
-generate_causal_link(content)
+# generate_causal_link(content)
+
+folder_path = "edited_summary"
+
+
+os.makedirs("recreated_CM", exist_ok=True)
+
+# Iterate through all files in the folder
+for file_name in os.listdir(folder_path):
+    if file_name.endswith("_edit_summary.txt"):  # Ensure correct file type
+        brand_name = file_name.split("_edit_summary.txt")[0]  # Extract brand name
+        file_path = os.path.join(folder_path, file_name)
+        
+        with open(file_path, "r", encoding="utf-8") as file:
+            content = file.read()
+        
+        generate_causal_link(content, brand_name)
