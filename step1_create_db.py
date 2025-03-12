@@ -3,7 +3,7 @@ import json
 import os
 
 # Load DataFrame
-df = pd.read_csv("all_brand_mock_data.csv")
+df = pd.read_csv("all_brand_mock_data (1).csv")
 
 # Define causal mappings
 causal_mappings = [
@@ -12,6 +12,7 @@ causal_mappings = [
     {"source": "AOS_YoY", "destination": "demand_YoY"},
     {"source": "AUR_YoY", "destination": "AOS_YoY"},
     {"source": "UPT_YoY", "destination": "AOS_YoY"},
+    {"source": "traffic_YoY", "destination": "conversion_YoY"},
 ]
 
 # Identify numeric columns
@@ -55,11 +56,25 @@ create_causal_map(df, overall_filename)
 
 
 
-filtered_df = df[(df['brand'] == 'Brand A') & (df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')]
+# # filtered_df = df[(df['brand'] == 'Brand A') & (df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')]
+filtered_df = df[(df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')][['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'price_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']]
+filtered_df = filtered_df.to_dict(orient='records')
+# # Convert to dictionary
+# result_dict = filtered_df.to_dict(orient='records')
+# with open("derived/filtered_df.json", "w") as file:
+#     json.dump(result_dict, file, indent=4)
 
-# Convert to dictionary
-result_dict = filtered_df.to_dict(orient='records')
-with open("derived/filtered_df.json", "w") as file:
-    json.dump(result_dict, file, indent=4)
+# print("Causal maps generated successfully!")
 
-print("Causal maps generated successfully!")
+output_dir = "derived"
+os.makedirs(output_dir, exist_ok=True)
+
+# Save each row as a separate JSON file
+for row in filtered_df:
+    brand_name = row["brand"].replace(" ", "_")  # Replace spaces with underscores
+    file_name = f"{output_dir}/{brand_name}_filtered_data.json"
+    
+    with open(file_name, "w") as file:
+        json.dump(row, file, indent=4)
+    
+    print(f"Saved: {file_name}")
