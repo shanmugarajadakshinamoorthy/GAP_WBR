@@ -3,15 +3,15 @@ import json
 import os
 
 # Load DataFrame
-df = pd.read_csv("sample_11_3.csv")
+df = pd.read_csv("all_brand_mock_data.csv")
 
 # Define causal mappings
 causal_mappings = [
     {"source": "discount_YoY", "destination": "demand_YoY"},
     {"source": "traffic_YoY", "destination": "demand_YoY"},
-    {"source": "ATV_YoY", "destination": "demand_YoY"},
-    {"source": "AUP_YoY", "destination": "ATV_YoY"},
-    {"source": "UPT_YoY", "destination": "ATV_YoY"},
+    {"source": "AOS_YoY", "destination": "demand_YoY"},
+    {"source": "AUR_YoY", "destination": "AOS_YoY"},
+    {"source": "UPT_YoY", "destination": "AOS_YoY"},
 ]
 
 # Identify numeric columns
@@ -55,7 +55,7 @@ create_causal_map(df, overall_filename)
 
 
 
-filtered_df = df[(df['brand'] == 'ATHL') & (df['year'] == 2023) & (df['month'] == 7) & (df['channel'] == 'ONL')]
+filtered_df = df[(df['brand'] == 'Brand A') & (df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')]
 
 # Convert to dictionary
 result_dict = filtered_df.to_dict(orient='records')
