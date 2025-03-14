@@ -83,6 +83,7 @@ def generate_causal_link(summary, brand_name):
     cleaned_text = re.sub(r"^```json|\n```$", "", json_output.strip(), flags=re.MULTILINE)
 
     with open(f"recreated_CM/{brand_name}_recreated_CM.json", "w") as file:
+        
         file.write(cleaned_text)
 
     print("JSON file saved successfully.")
