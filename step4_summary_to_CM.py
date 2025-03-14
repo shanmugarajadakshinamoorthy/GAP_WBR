@@ -3,6 +3,12 @@ import pandas as pd
 import json
 import re
 import os
+from dotenv import load_dotenv
+from openai import AzureOpenAI
+load_dotenv(override=True)
+AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
+AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
+AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
 
 # Load JSON data (historic trends)
 
@@ -60,9 +66,13 @@ def generate_causal_link(summary, brand_name):
     """
 
     
-    client = openai.OpenAI()
+    client = AzureOpenAI(
+            api_key=AZURE_OPENAI_API_KEY,
+            api_version=AZURE_OPENAI_API_VERSION,
+            azure_endpoint=AZURE_OPENAI_ENDPOINT
+        )
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="pfz-gpt-4o-mini",
         messages=[
             {"role": "system", "content": "You are a causal link creator summarizing business performance."},
             {"role": "user", "content": prompt}
@@ -85,18 +95,3 @@ def generate_causal_link(summary, brand_name):
 
 # generate_causal_link(content)
 
-folder_path = "edited_summary"
-
-
-os.makedirs("recreated_CM", exist_ok=True)
-
-# Iterate through all files in the folder
-for file_name in os.listdir(folder_path):
-    if file_name.endswith("_edit_summary.txt"):  # Ensure correct file type
-        brand_name = file_name.split("_edit_summary.txt")[0]  # Extract brand name
-        file_path = os.path.join(folder_path, file_name)
-        
-        with open(file_path, "r", encoding="utf-8") as file:
-            content = file.read()
-        
-        generate_causal_link(content, brand_name)
