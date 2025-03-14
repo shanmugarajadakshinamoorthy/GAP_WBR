@@ -37,25 +37,17 @@ def update_main_json(recreated_path, main_path, filtered_json_path, output_path)
         if node_id in filtered_values and filtered_values[node_id] is not None:
             value = filtered_values[node_id]
             if node_id in start_nodes:  # Directly present in recreated edges
-                if node["low_pass"] < value < node["high_pass"]:
-                    print(f"value inside band pass for {node_id}")
-                    low_diff = abs(value - node["low_pass"])
-                    high_diff = abs(value - node["high_pass"])
-                    if low_diff < high_diff:
-                        node["low_pass"] = value
-                    else:
-                        node["high_pass"] = value
-            elif node_id == 'demand':
-                pass
+                if value < node["low"]:
+                    node["low"] = value
+                elif value > node["high"]:
+                    node["high"] = value
             else:  # Not in start_nodes, adjust based on closest boundary
-                # print(f"value not available for {node_id}")
-                # print("node['low_pass']:", node["low_pass"])
-                # print("node['high_pass']:", node["high_pass"])
-                # print("value:", value)
-                if value < node["low_pass"]:
-                    node["low_pass"] = value
-                elif value > node["high_pass"]:
-                    node["high_pass"] = value
+                low_diff = abs(value - node["low"])
+                high_diff = abs(value - node["high"])
+                if low_diff < high_diff:
+                    node["low"] = value
+                else:
+                    node["high"] = value
     
     # Save the updated main.json
     with open(output_path, "w") as f:
@@ -78,10 +70,8 @@ def process_causal_maps(recreated_folder, main_folder, derived_folder, output_fo
         recreated_path = os.path.join(recreated_folder, recreated_file)
         filtered_json_path = os.path.join(derived_folder, derived_files.get(brand, ""))
         print("brand:",brand)
-        brand = brand.replace("_", " ")
-        key = f"KB_{brand}"
         # Find the corresponding file in causal_maps
-        main_file = next((f for f in os.listdir(main_folder) if f.startswith(key)), None)
+        main_file = next((f for f in os.listdir(main_folder) if f.startswith(f"KB_")), None)
         if not main_file or not os.path.exists(filtered_json_path):
             print(f"Skipping {brand}: Matching files not found in all folders.")
             continue
@@ -90,9 +80,6 @@ def process_causal_maps(recreated_folder, main_folder, derived_folder, output_fo
         output_path = os.path.join(output_folder, f"{brand}_processed.json")
         
         # Run the function
-        print("recreated_path:", recreated_path)
-        print("main_path:", main_path)
-        print("filtered_json_path:", filtered_json_path)
         update_main_json(recreated_path, main_path, filtered_json_path, output_path)
         print(f"Processed: {brand}")
 
