@@ -48,10 +48,10 @@ def generate_summary_from_causal_link(summary, filtered_df, brand):
  - This contains nodes and edges
  - Nodes : All the KPIs that should be explained as part of the summary.
    -- Schema : "id" -> Name of the KPI/Event
-	            "value" -> %change year over year.
+                    "value" -> %change year over year.
  - Edges : All the KPIs that impact the other KPIs. The summary should contain a causal reason for these.
    -- Schema : "start" -> KPI that makes the impact
-	            "end" -> KPI that receives the impact
+                    "end" -> KPI that receives the impact
                 "value" -> %change year over year for start node.
 
  - All nodes of this should be a part of the summary.
@@ -69,14 +69,12 @@ Now Look at the inputs below
 
 <Data JSON>
       {filtered_df}
-
 </Data JSON>
 
 
 <Knowledge Base>
 
 {summary}
-
 </Knowledge Base>
 
 
@@ -107,8 +105,10 @@ Demand at 59.3M (+4.3% vs LY) with the launch of SleekTech Activewear and promot
 - Dont make use of terms like "edge" and "node"
 - Make use of exact names present in the <Knowledge Base>
 - For Demand alone make sure to show the actual $ amount before (%change vs LY)
+- If Demand declined, produce the summary in order of top retractors first
+-If Demand increased, produce the summary in order of top drivers first 
 
-Just Follow instructions one by one."""
+Produce your chain of though by following steps in <Instructions> and then produce the summary."""
     extraction_prompt = """Extract only the final description exactly from the input.
 
     INPUT
@@ -136,7 +136,7 @@ Just Follow instructions one by one."""
             azure_endpoint=AZURE_OPENAI_ENDPOINT
         )
     response = client.chat.completions.create(
-        model="pfz-gpt-4o-mini",
+        model="pfz-gpt-4o",
         messages=[
             {"role": "system", "content": "You are a summary creator from causal link creator summarizing business performance."},
             {"role": "user", "content": prompt}
@@ -152,7 +152,7 @@ Just Follow instructions one by one."""
             file.write("")
 
     response = client.chat.completions.create(
-        model="pfz-gpt-4o-mini",
+        model="pfz-gpt-4o",
         messages=[
             {"role": "system", "content": "You are a summary creator from causal link creator summarizing business performance."},
             {"role": "user", "content": extraction_prompt.format(output = summary)}
