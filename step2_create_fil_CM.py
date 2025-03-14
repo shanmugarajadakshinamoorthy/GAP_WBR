@@ -7,7 +7,7 @@ def process_data(filtered_df, kb_file, output_file):
     with open(kb_file, "r") as f:
         kb_data = json.load(f)
 
-    nodes_kb = {node["id"]: (node["low_pass"], node["high_pass"]) for node in kb_data["nodes"]}
+    nodes_kb = {node["id"]: (node["low"], node["high"]) for node in kb_data["nodes"]}
     edges_kb = {(edge["start"], edge["end"]) for edge in kb_data["edges"]}
 
     # Identify significant variables
@@ -21,9 +21,7 @@ def process_data(filtered_df, kb_file, output_file):
         low, high = nodes_kb[node_key]
         if node_key == 'demand':
             significant_nodes[node_key] = value
-        elif value< low:
-            significant_nodes[node_key] = value
-        elif value> high:
+        elif low < value < high:
             significant_nodes[node_key] = value
             # print("key:", key)
             # print("value:", value)
