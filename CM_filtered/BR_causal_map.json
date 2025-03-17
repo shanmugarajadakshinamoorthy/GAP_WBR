@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "demand",
+      "value": -25.062894
+    },
+    {
+      "id": "discount",
+      "value": -13.61108985
+    },
+    {
+      "id": "AOS",
+      "value": -1069.566769
+    },
+    {
+      "id": "UPT",
+      "value": -28.1540095
+    },
+    {
+      "id": "AUR",
+      "value": 4.893336
+    },
+    {
+      "id": "conversion",
+      "value": 0.214518218
+    }
+  ],
+  "edges": [
+    {
+      "start": "UPT",
+      "end": "AOS",
+      "value": -28.1540095
+    },
+    {
+      "start": "AOS",
+      "end": "demand",
+      "value": -1069.566769
+    },
+    {
+      "start": "discount",
+      "end": "AUR",
+      "value": -13.61108985
+    },
+    {
+      "start": "AUR",
+      "end": "demand",
+      "value": 4.893336
+    }
+  ]
+}

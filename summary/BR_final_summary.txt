@@ -1,0 +1,75 @@
+### **Instruction Set 1**
+
+#### **Step 1: List of all nodes mentioned in "edges"**
+Nodes mentioned in "edges" are:
+- UPT
+- AOS
+- demand
+- discount
+- AUR
+
+#### **Step 2: Group by "end node" and collect the names of all "start nodes"**
+Grouped collection of start nodes for each end node:
+- **AOS**: [UPT]
+- **demand**: [AOS, AUR]
+- **AUR**: [discount]
+
+#### **Step 3: Analysis for each group**
+
+**Group: AOS**
+- **Start Node: UPT**
+  - Definition: Units per transaction (UPT).
+  - Expected impact: A decline in UPT (-28.15% vs LY) is expected to reduce AOS, as fewer units per transaction typically lead to a lower average order size.
+  - Observed impact: AOS declined significantly (-1069.57% vs LY), which aligns with the expected impact of reduced UPT.
+  - Do the Expected and Observed impact match? Yes.
+  - Link word: driven by.
+
+---
+
+**Group: demand**
+- **Start Node: AOS**
+  - Definition: Average order size (AOS).
+  - Expected impact: A sharp decline in AOS (-1069.57% vs LY) is expected to negatively impact demand, as lower order sizes typically reduce overall revenue.
+  - Observed impact: Demand declined (-25.06% vs LY), which aligns with the expected impact of reduced AOS.
+  - Do the Expected and Observed impact match? Yes.
+  - Link word: driven by.
+
+- **Start Node: AUR**
+  - Definition: Average unit retail (AUR).
+  - Expected impact: An increase in AUR (+4.89% vs LY) is expected to positively impact demand, as higher prices per unit can drive revenue growth.
+  - Observed impact: Demand declined (-25.06% vs LY), which does not align with the expected positive impact of increased AUR.
+  - Do the Expected and Observed impact match? No.
+  - Link word: despite.
+
+---
+
+**Group: AUR**
+- **Start Node: discount**
+  - Definition: Discount percentage.
+  - Expected impact: A decline in discount (-13.61% vs LY) is expected to increase AUR, as reduced promotional pricing typically leads to higher average unit retail.
+  - Observed impact: AUR increased (+4.89% vs LY), which aligns with the expected impact of reduced discounting.
+  - Do the Expected and Observed impact match? Yes.
+  - Link word: driven by.
+
+---
+
+#### **Step 4: List all nodes with incoming or outgoing edges**
+Nodes with edges:
+- **UPT**: Outgoing edge to AOS.
+- **AOS**: Incoming edge from UPT; Outgoing edge to demand.
+- **demand**: Incoming edges from AOS and AUR.
+- **discount**: Outgoing edge to AUR.
+- **AUR**: Incoming edge from discount; Outgoing edge to demand.
+
+---
+
+#### **Step 5: List all nodes without an edge**
+Nodes without edges:
+- **conversion**: Conversion rate (+0.21% vs LY).
+
+---
+
+### **Instruction Set 2**
+
+#### **Description**
+Demand at $25.06M (-25.06% vs LY) was driven by a sharp decline in AOS (<$-1069.57> vs LY <$AOS_LY>) and despite an increase in AUR (+4.89% vs LY). AOS (<$-1069.57> vs LY <$AOS_LY>) was driven by lower UPT (-28.15% vs LY). AUR (+4.89% vs LY) was driven by reduced discounting (-13.61% vs LY). Conversion rate (+0.21% vs LY).

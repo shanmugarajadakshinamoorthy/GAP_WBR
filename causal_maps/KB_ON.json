@@ -48,7 +48,7 @@
   ],
   "edges": [
     {
-      "start": "discount",
+      "start": "orders",
       "end": "demand"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "start": "AUR",
-      "end": "AOS"
+      "end": "demand"
     },
     {
       "start": "UPT",
@@ -70,6 +70,10 @@
     {
       "start": "orders",
       "end": "conversion"
+    },
+    {
+      "start": "discount",
+      "end": "AUR"
     }
   ]
 }

@@ -1,0 +1,50 @@
+### **Instruction Set 1 Execution**
+
+#### **Step 1: List of all nodes mentioned in "edges"**
+- Nodes mentioned in "edges":
+  - Start Nodes: AOS, AUR
+  - End Nodes: Demand
+
+#### **Step 2: Group by "end node" and collect names of "start nodes"**
+- Grouped collection:
+  - End Node: Demand
+    - Start Nodes: [AOS, AUR]
+
+#### **Step 3: Analyze each group for "start nodes"**
+
+**Group: Demand**
+- **Start Node: AOS**
+  - Definition: AOS refers to Average Order Size, which measures the average dollar amount spent per order.
+  - Expected Impact: AOS is expected to positively impact Demand because higher order sizes typically contribute to higher overall demand.
+  - Observed Impact: AOS declined significantly (-773.99% vs LY), which correlates with the decline in Demand (-17.36% vs LY).
+  - Do Expected and Observed Impact Match? Yes
+  - Link Word: driven by
+
+- **Start Node: AUR**
+  - Definition: AUR refers to Average Unit Retail, which measures the average price per unit sold.
+  - Expected Impact: AUR is expected to positively impact Demand because higher unit prices can increase revenue and demand.
+  - Observed Impact: AUR increased slightly (+0.25% vs LY), but Demand still declined (-17.36% vs LY).
+  - Do Expected and Observed Impact Match? No
+  - Link Word: despite
+
+#### **Step 4: Check for incoming or outgoing edges for all nodes in "nodes"**
+- **Node: Demand**
+  - Incoming Edges: Yes (from AOS and AUR)
+  - Outgoing Edges: No
+- **Node: AOS**
+  - Incoming Edges: No
+  - Outgoing Edges: Yes (to Demand)
+- **Node: AUR**
+  - Incoming Edges: No
+  - Outgoing Edges: Yes (to Demand)
+
+#### **Step 5: List nodes without edges**
+- All nodes in "nodes" have edges. No nodes are without edges.
+
+---
+
+### **Instruction Set 2 Execution**
+
+**Description:**
+
+Demand at $59.3M (-17.36% vs LY) was driven by a significant decline in AOS (<$AOS> vs LY <$AOS_LY>) despite a slight increase in AUR (+0.25% vs LY).

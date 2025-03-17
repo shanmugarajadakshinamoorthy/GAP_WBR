@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "demand",
+      "value": -13.704543
+    },
+    {
+      "id": "AOS",
+      "value": -2004.48401
+    },
+    {
+      "id": "UPT",
+      "value": -4.72679071
+    },
+    {
+      "id": "AUR",
+      "value": -6.310013
+    }
+  ],
+  "edges": [
+    {
+      "start": "UPT",
+      "end": "AOS",
+      "value": -4.72679071
+    },
+    {
+      "start": "AOS",
+      "end": "demand",
+      "value": -2004.48401
+    },
+    {
+      "start": "AUR",
+      "end": "demand",
+      "value": -6.310013
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+### Step-by-Step Execution:
+
+#### **Instruction Set 1**
+
+1. **List of all nodes mentioned in "edges" in the Knowledge Base**  
+   - There are no edges in the Knowledge Base. Hence, no nodes are mentioned in "edges."
+
+2. **Group by "end node" and collect the names of all the "Start Node"**  
+   - Since there are no edges, there are no groups or start nodes to collect.
+
+3. **Perform analysis for each group in 2**  
+   - No groups exist due to the absence of edges. Hence, this step is skipped.
+
+4. **List down all "nodes_ids" mentioned under *nodes* from the Knowledge Base**  
+   - Nodes mentioned: `demand`  
+   - Check for incoming or outgoing edges:  
+     - `demand` has no incoming or outgoing edges.
+
+5. **List all nodes without an edge along with their change numbers**  
+   - `demand` is the only node without an edge. Its change number is -5.001191 (%change vs LY).
+
+---
+
+#### **Instruction Set 2**
+
+**Description:**  
+Demand at $59.3M (-5% vs LY).

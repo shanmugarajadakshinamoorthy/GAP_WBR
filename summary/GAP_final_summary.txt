@@ -1,0 +1,68 @@
+### **Instruction Set 1**
+
+#### **Step 1: List of all nodes mentioned in "edges"**
+Nodes mentioned in "edges":
+- UPT
+- AOS
+- AUR
+- demand
+
+#### **Step 2: Group by "end node" and collect names of "start nodes"**
+Grouped collection of start nodes for each end node:
+- **End Node: AOS**
+  - Start Nodes: UPT
+- **End Node: demand**
+  - Start Nodes: AOS, AUR
+
+#### **Step 3: Analysis for each group**
+
+##### **Group 1: End Node = AOS**
+- **Start Node: UPT**
+  - **Definition**: Units Per Transaction (UPT)
+  - **Expected Impact**: Higher UPT typically increases AOS as more items are purchased per transaction.
+  - **Observed Impact**: UPT declined (-4.73% vs LY), which aligns with the observed decline in AOS (-2004.48% vs LY).
+  - **Match**: Yes
+  - **Link Word**: driven by
+
+##### **Group 2: End Node = demand**
+- **Start Node: AOS**
+  - **Definition**: Average Order Size (AOS)
+  - **Expected Impact**: A decline in AOS reduces demand as the average revenue per order decreases.
+  - **Observed Impact**: AOS declined (-2004.48% vs LY), which aligns with the observed decline in demand (-13.70% vs LY).
+  - **Match**: Yes
+  - **Link Word**: driven by
+- **Start Node: AUR**
+  - **Definition**: Average Unit Retail (AUR)
+  - **Expected Impact**: Lower AUR reduces demand as the revenue per unit sold decreases.
+  - **Observed Impact**: AUR declined (-6.31% vs LY), which aligns with the observed decline in demand (-13.70% vs LY).
+  - **Match**: Yes
+  - **Link Word**: driven by
+
+#### **Step 4: Check for incoming or outgoing edges for nodes**
+- **Node: demand**
+  - Incoming Edges: AOS (-2004.48% vs LY), AUR (-6.31% vs LY)
+  - Outgoing Edges: None
+- **Node: AOS**
+  - Incoming Edges: UPT (-4.73% vs LY)
+  - Outgoing Edges: demand (-2004.48% vs LY)
+- **Node: UPT**
+  - Incoming Edges: None
+  - Outgoing Edges: AOS (-4.73% vs LY)
+- **Node: AUR**
+  - Incoming Edges: None
+  - Outgoing Edges: demand (-6.31% vs LY)
+
+#### **Step 5: List nodes without edges**
+Nodes without edges:
+- **Node: conversion**
+  - Change: +0.12% vs LY
+- **Node: traffic**
+  - Change: -10.32% vs LY
+- **Node: discount**
+  - Change: -0.25% vs LY
+
+---
+
+### **Instruction Set 2**
+
+Demand at $59.3M (-13.70% vs LY) was driven by a significant decline in AOS (<$AOS> vs LY <$AOS_LY>) and lower AUR (-6.31% vs LY). AOS (<$AOS> vs LY <$AOS_LY>) was driven by lower UPT (-4.73% vs LY). Conversion improved (+0.12% vs LY). Traffic declined (-10.32% vs LY). Discounting was slightly lower (-0.25% vs LY).
