@@ -1,0 +1,14 @@
+{
+    "brand": "Brand A",
+    "year": 2024,
+    "month": 12,
+    "channel": "ONL",
+    "demand_YoY": 24.191701,
+    "discount_YoY": 36.05524479,
+    "price_YoY": -15.19313176,
+    "traffic_YoY": -2.119613318,
+    "AOS_YoY": 250.401382,
+    "UPT_YoY": 17.22639811,
+    "AUR_YoY": -5.772741,
+    "conversion_YoY": 0.231029879
+}

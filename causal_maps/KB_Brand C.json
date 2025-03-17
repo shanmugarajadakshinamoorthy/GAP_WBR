@@ -1,0 +1,75 @@
+{
+  "nodes": [
+    {
+      "id": "discount",
+      "low_pass": -2.51,
+      "high_pass": -0.87
+    },
+    {
+      "id": "price",
+      "low_pass": -2.65,
+      "high_pass": -1.35
+    },
+    {
+      "id": "traffic",
+      "low_pass": -4.84,
+      "high_pass": 6.19
+    },
+    {
+      "id": "AOS",
+      "low_pass": 0.04,
+      "high_pass": 1.41
+    },
+    {
+      "id": "UPT",
+      "low_pass": 4.21,
+      "high_pass": 6.5
+    },
+    {
+      "id": "AUR",
+      "low_pass": -0.75,
+      "high_pass": -0.26
+    },
+    {
+      "id": "orders",
+      "low_pass": -8.27,
+      "high_pass": 0.38
+    },
+    {
+      "id": "demand",
+      "low_pass": -9.08,
+      "high_pass": 0.43
+    },
+    {
+      "id": "conversion",
+      "low_pass": -0.08,
+      "high_pass": 0.01
+    }
+  ],
+  "edges": [
+    {
+      "start": "discount",
+      "end": "demand"
+    },
+    {
+      "start": "AOS",
+      "end": "demand"
+    },
+    {
+      "start": "AUR",
+      "end": "AOS"
+    },
+    {
+      "start": "UPT",
+      "end": "AOS"
+    },
+    {
+      "start": "traffic",
+      "end": "conversion"
+    },
+    {
+      "start": "orders",
+      "end": "conversion"
+    }
+  ]
+}

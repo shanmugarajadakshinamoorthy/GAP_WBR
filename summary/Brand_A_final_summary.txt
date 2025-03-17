@@ -1,0 +1,55 @@
+1. List of all the nodes mentioned in "edges":
+   - AUR
+   - AOS
+   - discount
+   - demand
+   - UPT
+
+2. Group by "end node" and collect the names of all the "Start Node":
+   - demand: 
+     - discount
+     - AOS
+   - AOS: 
+     - AUR
+     - UPT
+
+3. Expected and Observed impacts:
+   - For demand:
+     a. Definition of discount: A reduction in the price of products to stimulate sales.
+     b. Expected impact of discount on demand: An increase in demand is expected as lower prices typically attract more customers.
+     c. Observed impact of discount on demand: Demand increased by 24.19% (%change vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+     a. Definition of AOS: Average Order Size, the average value of each transaction.
+     b. Expected impact of AOS on demand: An increase in AOS is expected to lead to higher demand as customers purchase more items per transaction.
+     c. Observed impact of AOS on demand: Demand increased by 24.19% (%change vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+   - For AOS:
+     a. Definition of AUR: Average Unit Retail, the average price at which products are sold.
+     b. Expected impact of AUR on AOS: A decrease in AUR is expected to negatively impact AOS as lower prices may lead to lower overall transaction values.
+     c. Observed impact of AUR on AOS: AOS increased by 250.40% (%change vs LY).
+     d. Do the Expected and Observed impact the same? No.
+     e. Link word: despite.
+
+     a. Definition of UPT: Units Per Transaction, the average number of items purchased in a single transaction.
+     b. Expected impact of UPT on AOS: An increase in UPT is expected to drive AOS higher as customers buy more items.
+     c. Observed impact of UPT on AOS: AOS increased by 250.40% (%change vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+4. Incoming and outgoing edges:
+   - demand: Incoming from discount and AOS.
+   - discount: Outgoing to demand.
+   - AOS: Incoming from AUR and UPT; Outgoing to demand.
+   - UPT: Outgoing to AOS.
+   - AUR: Outgoing to AOS.
+
+5. Nodes without an edge:
+   - traffic: -2.12% vs LY
+   - price: -15.19% vs LY
+
+Description:
+Demand at $X (+24.19% vs LY) was driven by discount (+36.06% vs LY) and AOS (+250.40% vs LY), despite AUR (-5.77% vs LY). AOS was driven by UPT (+17.23% vs LY). Traffic was down (-2.12% vs LY) and price decreased (-15.19% vs LY).

@@ -1,0 +1,16 @@
+openai
+beautifulsoup4
+requests
+python-dotenv
+autogen
+instructor
+loguru
+pandas
+json
+re
+databricks
+databricks-connect
+AzureOpenAI
+pandas
+dotenv
+streamlit

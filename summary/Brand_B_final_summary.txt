@@ -1,0 +1,62 @@
+1. List of all the nodes mentioned in "edges":
+   - traffic
+   - conversion
+   - AUR
+   - AOS
+   - discount
+   - demand
+   - UPT
+
+2. Group by "end node" and collect the names of all the "Start Node":
+   - conversion: [traffic]
+   - AOS: [AUR, UPT]
+   - demand: [discount, AOS]
+   
+3. Expected and Observed impact for each group:
+   - For conversion:
+     a. Definition of traffic: The number of visitors to the online channel.
+     b. Expected impact of traffic on conversion: An increase in traffic is expected to enhance the conversion rate as more visitors typically lead to more sales.
+     c. Observed impact of traffic on conversion: Traffic was up (9.98% vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+   - For AOS:
+     a. Definition of AUR: Average Unit Retail price.
+     b. Expected impact of AUR on AOS: An increase in AUR is expected to raise the Average Order Size (AOS) as higher prices generally lead to higher revenue per transaction.
+     c. Observed impact of AUR on AOS: AUR was up (3.03% vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+     a. Definition of UPT: Units Per Transaction.
+     b. Expected impact of UPT on AOS: An increase in UPT is expected to boost AOS as more units sold per transaction typically increase the total order value.
+     c. Observed impact of UPT on AOS: UPT was up (91.13% vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+   - For demand:
+     a. Definition of discount: The percentage reduction in price.
+     b. Expected impact of discount on demand: An increase in discount is expected to stimulate demand as lower prices attract more customers.
+     c. Observed impact of discount on demand: Discount was up (4.95% vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+     a. Definition of AOS: Average Order Size.
+     b. Expected impact of AOS on demand: An increase in AOS is expected to enhance demand as larger orders typically indicate higher customer interest.
+     c. Observed impact of AOS on demand: AOS was up (851.78% vs LY).
+     d. Do the Expected and Observed impact the same? Yes.
+     e. Link word: driven by.
+
+4. List of nodes with incoming or outgoing edges:
+   - traffic: outgoing to conversion.
+   - conversion: incoming from traffic.
+   - AUR: outgoing to AOS.
+   - AOS: incoming from AUR and UPT, outgoing to demand.
+   - discount: outgoing to demand.
+   - demand: incoming from discount and AOS.
+   - UPT: outgoing to AOS.
+
+5. Nodes without an edge:
+   - None.
+
+Description:
+Demand at $193.38M (+93.38% vs LY) was driven by an increase in discount (4.95% vs LY) and AOS (851.78% vs LY), which was driven by both UPT (91.13% vs LY) and AUR (3.03% vs LY). Conversion was down (-0.13% vs LY) despite an increase in traffic (9.98% vs LY).

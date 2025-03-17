@@ -4,8 +4,9 @@ import pandas as pd
 from step2_create_fil_CM import process_data
 from step3_CM_to_summary import process_causal_maps
 
+# , col_list, brand_selected, input_file_name
 
-def all_brand_summary(year, month, channel, input_file_name, col_list, brand_selected):
+def all_brand_summary(year, month, channel, input_file_name , col_list, brand_selected="All"):
     output_dir = "derived"
     derived_folder = "derived"
     causal_maps_folder = "causal_maps"
@@ -61,15 +62,15 @@ def all_brand_summary(year, month, channel, input_file_name, col_list, brand_sel
     # Example usage
     process_causal_maps(cm_folder, derived_folder, brand_selected)
 
-year = 2024
-month = 9
-channel = 'ONL'
-# brand_selected = "All"
-brand_selected = "Brand_B"
-input_file_name = "Brand_data_mock.csv"
+# year = 2024
+# month = 9
+# channel = 'ONL'
+brand_selected = "All"
+# brand_selected = "Brand_B"
+# input_file_name = "Brand_data_mock.csv"
 
-col_list = ['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'price_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']
-all_brand_summary(year, month, channel, input_file_name, col_list, brand_selected)
+# col_list = ['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'price_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']
+# all_brand_summary(year, month, channel, input_file_name, col_list, brand_selected)
 
 # input_file_name = "overall_data_new_demand.csv"
 # col_list = ['year', 'month', 'channel', 'demand_YoY', 'ATHL_demand_contribution_YoY', 'BR_demand_contribution_YoY', 'ON_demand_contribution_YoY', 'GAP_demand_contribution_YoY']

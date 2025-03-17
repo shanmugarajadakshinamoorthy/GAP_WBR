@@ -1,0 +1,14 @@
+{
+    "brand": "Brand C",
+    "year": 2024,
+    "month": 12,
+    "channel": "ONL",
+    "demand_YoY": 50.868915,
+    "discount_YoY": -3.423348614,
+    "price_YoY": 6.632315575,
+    "traffic_YoY": 14.97721746,
+    "AOS_YoY": 655.785618,
+    "UPT_YoY": 45.88674801,
+    "AUR_YoY": 0.704146,
+    "conversion_YoY": -0.137947523
+}
