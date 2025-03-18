@@ -1,0 +1,45 @@
+{
+  "nodes": [
+    {
+      "id": "conversion",
+      "value": 17.34061824
+    },
+    {
+      "id": "demand",
+      "value": 19.7817062
+    },
+    {
+      "id": "ATHL_demand_contribution",
+      "value": 3.011491903
+    },
+    {
+      "id": "BR_demand_contribution",
+      "value": -2.307865167
+    },
+    {
+      "id": "ON_demand_contribution",
+      "value": 0.204511828
+    },
+    {
+      "id": "GAP_demand_contribution",
+      "value": -0.908138564
+    }
+  ],
+  "edges": [
+    {
+      "start": "ON_demand_contribution",
+      "end": "demand",
+      "value": 0.204511828
+    },
+    {
+      "start": "BR_demand_contribution",
+      "end": "demand",
+      "value": -2.307865167
+    },
+    {
+      "start": "GAP_demand_contribution",
+      "end": "demand",
+      "value": -0.908138564
+    }
+  ]
+}

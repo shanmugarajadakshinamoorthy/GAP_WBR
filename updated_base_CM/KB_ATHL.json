@@ -12,7 +12,7 @@
     },
     {
       "id": "traffic",
-      "low_pass": 3.27,
+      "low_pass": 2.875755256,
       "high_pass": 9.16
     },
     {

@@ -32,7 +32,7 @@ def extract_summary(text):
 #     match = re.search(r"Summary:\n(.*)", text, re.DOTALL)
 #     return match.group(1).strip() if match else None
 
-def generate_summary_from_causal_link(summary, filtered_df, brand):
+def generate_summary_from_causal_link(summary, filtered_df, brand, destination_folder="edited_summary"):
     """Compare trends and generate a business summary using LLM."""
     """Compare trends and generate a business summary using LLM."""
     kb = summary
@@ -198,7 +198,7 @@ Just Follow Instructions one by one."""
     
     summary = response.choices[0].message.content.replace("YoY", "vs LY")
     
-    
+    print('step1')
     with open("derived/final_summary.txt", "w", encoding="utf-8") as file:
         file.write(summary)
 
@@ -212,6 +212,7 @@ Just Follow Instructions one by one."""
     )
     
     summary = response.choices[0].message.content.replace("YoY", "vs LY")
+    print('step2')
     # # print(filtered_df)
     # filtered_df_trim = {}
     # for key in kb["nodes"]:
@@ -232,11 +233,11 @@ Just Follow Instructions one by one."""
         ],
         temperature = 0.1
     )
-    
+    print('step3')
     correct_summary = correct_summary.choices[0].message.content.replace("YoY", "vs LY")
     correct_summary = extract_summary(correct_summary)
 
-    with open(f"edited_summary/{brand}_edit_summary.txt", "w", encoding="utf-8") as file:
+    with open(f"{destination_folder}/{brand}_edit_summary.txt", "w", encoding="utf-8") as file:
         if summary is not None:
             file.write(summary)
         else:
@@ -254,7 +255,7 @@ Just Follow Instructions one by one."""
 
 # generate_summary_from_causal_link(map, filtered_df)
 
-def process_causal_maps(cm_folder, derived_folder, brand_selected="All"):
+def process_causal_maps(cm_folder, derived_folder, brand_selected="All", destination_folder = None):
     cm_files = {f.split('_causal_map.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map.json')}
     derived_files = {f.split('_filtered_data.json')[0]: os.path.join(derived_folder, f) for f in os.listdir(derived_folder) if f.endswith('_filtered_data.json')}
     
@@ -277,5 +278,7 @@ def process_causal_maps(cm_folder, derived_folder, brand_selected="All"):
         with open(derived_file_path, 'r') as derived_file:
             filtered_df = json.load(derived_file)
         
-
-        generate_summary_from_causal_link(causal_map, [filtered_df], brand)
+        if destination_folder is None:
+            generate_summary_from_causal_link(causal_map, [filtered_df], brand)
+        else:
+            generate_summary_from_causal_link(causal_map, [filtered_df], brand, 'overall')

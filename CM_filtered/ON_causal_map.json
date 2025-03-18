@@ -35,9 +35,9 @@
   ],
   "edges": [
     {
-      "start": "UPT",
-      "end": "AOS",
-      "value": 45.88674801
+      "start": "AUR",
+      "end": "demand",
+      "value": 0.704146
     },
     {
       "start": "traffic",
@@ -45,9 +45,9 @@
       "value": 14.97721746
     },
     {
-      "start": "AUR",
-      "end": "demand",
-      "value": 0.704146
+      "start": "UPT",
+      "end": "AOS",
+      "value": 45.88674801
     },
     {
       "start": "discount",

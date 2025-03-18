@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "id": "conversion",
+      "low_pass": -8.16,
+      "high_pass": 2.7
+    },
+    {
+      "id": "demand",
+      "low_pass": -2.26,
+      "high_pass": 7.29
+    },
+    {
+      "id": "ATHL_demand_contribution",
+      "low_pass": -0.77,
+      "high_pass": -0.25
+    },
+    {
+      "id": "BR_demand_contribution",
+      "low_pass": -0.08,
+      "high_pass": 0.16
+    },
+    {
+      "id": "ON_demand_contribution",
+      "low_pass": 0.95,
+      "high_pass": 1.48
+    },
+    {
+      "id": "GAP_demand_contribution",
+      "low_pass": -0.59,
+      "high_pass": -0.42
+    }
+  ],
+  "edges": [
+    {
+      "start": "discount",
+      "end": "demand"
+    },
+    {
+      "start": "traffic",
+      "end": "demand"
+    },
+    {
+      "start": "AOS",
+      "end": "demand"
+    },
+    {
+      "start": "AUR",
+      "end": "AOS"
+    },
+    {
+      "start": "UPT",
+      "end": "AOS"
+    },
+    {
+      "start": "AT_demand_contribution",
+      "end": "demand"
+    },
+    {
+      "start": "ON_demand_contribution",
+      "end": "demand"
+    },
+    {
+      "start": "GAP_demand_contribution",
+      "end": "demand"
+    },
+    {
+      "start": "BR_demand_contribution",
+      "end": "demand"
+    }
+  ]
+}
