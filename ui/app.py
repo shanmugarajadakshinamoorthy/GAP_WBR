@@ -58,7 +58,7 @@ def handle_brand_change(brand_selected):
     plot_function(input_folder, output_folder, brand_selected)
 
 with st.sidebar:
-    st.image("ui/assets/gap_logo.png", width=100)
+    st.image("ui/assets/gap_logo.png", width=140)
 
     st.divider()
     st.subheader("WBR Summary")

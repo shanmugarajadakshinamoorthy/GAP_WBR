@@ -12,7 +12,8 @@ def process_data(filtered_df, kb_file, output_file):
 
     # Identify significant variables
     significant_nodes = {}
-    data = filtered_df  # Assuming single row
+    # data = filtered_df  # Assuming single row
+    data = {k: v for k, v in filtered_df.items() if "_YoY" in k}
     for key, value in data.items():
         if value is None or key.replace("_YoY", "") not in nodes_kb:
             continue

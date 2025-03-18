@@ -1,9 +1,41 @@
 {
   "nodes": [
     {
+      "id": "traffic",
+      "value": 2.875755256
+    },
+    {
+      "id": "AOS",
+      "value": 1439.954515
+    },
+    {
+      "id": "UPT",
+      "value": 66.10042822
+    },
+    {
+      "id": "orders",
+      "value": -18.9546929
+    },
+    {
       "id": "demand",
-      "value": -5.001191
+      "value": 28.214233
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "start": "UPT",
+      "end": "AOS",
+      "value": 66.10042822
+    },
+    {
+      "start": "orders",
+      "end": "demand",
+      "value": -18.9546929
+    },
+    {
+      "start": "AOS",
+      "end": "demand",
+      "value": 1439.954515
+    }
+  ]
 }

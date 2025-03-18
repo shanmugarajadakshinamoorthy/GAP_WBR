@@ -12,6 +12,10 @@ def update_main_json(recreated_path, main_path, filtered_json_path, output_path)
     with open(filtered_json_path) as f:
         filtered_json = json.load(f)
 
+    print("recreated_path:", recreated_path)
+    print("main_path:", main_path)
+    print("filtered_json_path:", filtered_json_path)
+
     # Create a lookup dictionary for filtered_json values
     filtered_values = {
         "traffic": filtered_json.get("traffic_YoY"),
@@ -24,7 +28,7 @@ def update_main_json(recreated_path, main_path, filtered_json_path, output_path)
         "Conversion Rate": filtered_json.get("conversion_YoY"),
         "conversion": filtered_json.get("conversion_YoY")  # Matching name in main.json
     }
-
+    print("filtered_values:", filtered_values)
     # Extract "start" nodes from recreated edges
     start_nodes = {edge["start"] for edge in recreated["edges"]}
 
@@ -35,7 +39,7 @@ def update_main_json(recreated_path, main_path, filtered_json_path, output_path)
             value = filtered_values[node_id]
             if node_id in start_nodes:  # Directly present in recreated edges
                 if node["low_pass"] < value < node["high_pass"]:
-                    # print(f"value inside band pass for {node_id}")
+                    print(f"value inside band pass for {node_id}")
                     low_diff = abs(value - node["low_pass"])
                     high_diff = abs(value - node["high_pass"])
                     if low_diff < high_diff:

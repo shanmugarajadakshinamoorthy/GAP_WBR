@@ -1,0 +1,51 @@
+### Step-by-Step Execution of Instructions
+
+#### **Instruction Set 1**
+
+1. **List of all nodes mentioned in "edges" in the knowledge base:**
+   - Nodes: `UPT`, `AOS`, `orders`, `demand`
+
+2. **Group by "end node" and collect the names of all the "Start Node":**
+   - `AOS`: Start Node = `UPT`
+   - `demand`: Start Nodes = `orders`, `AOS`
+
+3. **For each group in 2, perform the following:**
+
+   **Group 1: End Node = `AOS`, Start Node = `UPT`**
+   - a. Definition: Units Per Transaction (UPT)
+   - b. Expected impact: Higher UPT typically increases AOS as customers purchase more items per transaction.
+   - c. Observed impact: UPT increased (+66.1% VS LY), and AOS increased ($3814.1 VS LY $2374.0).
+   - d. Do the Expected and Observed impact the same? Yes
+   - e. Link word: "driven by"
+
+   **Group 2: End Node = `demand`, Start Node = `orders`**
+   - a. Definition: Orders
+   - b. Expected impact: A decline in orders typically reduces demand as fewer transactions occur.
+   - c. Observed impact: Orders decreased (-19% VS LY), but demand increased ($220.5M +28.2% VS LY).
+   - d. Do the Expected and Observed impact the same? No
+   - e. Link word: "despite"
+
+   **Group 3: End Node = `demand`, Start Node = `AOS`**
+   - a. Definition: Average Order Size (AOS)
+   - b. Expected impact: Higher AOS typically increases demand as the monetary value per order rises.
+   - c. Observed impact: AOS increased ($3814.1 VS LY $2374.0), and demand increased ($220.5M +28.2% VS LY).
+   - d. Do the Expected and Observed impact the same? Yes
+   - e. Link word: "driven by"
+
+4. **List down all "nodes_ids" mentioned under *nodes* and check for edges:**
+   - `traffic`: No incoming or outgoing edge.
+   - `AOS`: Incoming edge from `UPT`. Outgoing edge to `demand`.
+   - `UPT`: Outgoing edge to `AOS`.
+   - `orders`: Outgoing edge to `demand`.
+   - `demand`: Incoming edges from `orders` and `AOS`.
+
+5. **List all nodes without an edge along with their change numbers:**
+   - `traffic`: 70341775 (+2.9% VS LY)
+
+---
+
+#### **Instruction Set 2**
+
+**Description:**
+
+Demand at $220.5M (+28.2% VS LY) was driven by higher AOS ($3814.1 VS LY $2374.0) and despite lower orders (-19% VS LY). AOS ($3814.1 VS LY $2374.0) was driven by higher UPT (+66.1% VS LY). Traffic was up (+2.9% VS LY).

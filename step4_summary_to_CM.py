@@ -47,12 +47,12 @@ def generate_causal_link(summary, brand_name):
     demand
     discount
     traffic
-    Order
+    order
     UPT
     ATV
     AOS
     AUR
-    Conversion Rate
+    conversion
 
     Hint:
     Mostly Events will be impacting KPIs

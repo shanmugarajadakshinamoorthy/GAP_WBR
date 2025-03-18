@@ -1,0 +1,77 @@
+
+{
+  "nodes": [
+    {
+      "id": "demand",
+      "value": "Demand increased to $84.79M (+24.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "Order",
+      "value": "higher orders (+20.5% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "AOS",
+      "value": "higher AOS ($6212.59 VS LY $5962.0)",
+      "correct": "True"
+    },
+    {
+      "id": "UPT",
+      "value": "more UPT (+17.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "Conversion Rate",
+      "value": "Conversion increased (+0.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "traffic",
+      "value": "lower traffic (-2.1% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "price",
+      "value": "Price was $44.39 (-15.2% VS LY)",
+      "correct": "True"
+    }
+  ],
+  "edges": [
+    {
+      "start": "Order",
+      "end": "demand",
+      "impact": "positive",
+      "value": "driven by higher orders (+20.5% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "AOS",
+      "end": "demand",
+      "impact": "positive",
+      "value": "higher AOS ($6212.59 VS LY $5962.0)",
+      "correct": "True"
+    },
+    {
+      "start": "UPT",
+      "end": "AOS",
+      "impact": "positive",
+      "value": "driven by more UPT (+17.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "Order",
+      "end": "Conversion Rate",
+      "impact": "positive",
+      "value": "driven by higher orders (+20.5% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "traffic",
+      "end": "Conversion Rate",
+      "impact": "negative",
+      "value": "despite lower traffic (-2.1% VS LY)",
+      "correct": "True"
+    }
+  ]
+}

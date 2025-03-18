@@ -25,7 +25,9 @@ def all_brand_summary(year, month, channel, input_file_name , causal_maps_folder
 
     # # filtered_df = df[(df['brand'] == 'Brand A') & (df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')]
     # filtered_df = df[(df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')][['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'price_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']]
-    filtered_df = df[(df['year'] == year) & (df['month'] == month) & (df['channel'] == channel)][col_list]
+    filtered_df = df[(df['year'] == year) & (df['month'] == month) & (df['channel'] == channel)]
+    # filtered_df = filtered_df.loc[:, ~filtered_df.columns.str.contains(r'\bprice\b', case=False, regex=True)]
+    # [col_list]
     filtered_df = filtered_df.to_dict(orient='records')
 
     # Save each row as a separate JSON file
