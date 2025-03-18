@@ -7,12 +7,12 @@
     },
     {
       "id": "price",
-      "low_pass": -4.32,
+      "low_pass": -4.396365398,
       "high_pass": -2.37
     },
     {
       "id": "traffic",
-      "low_pass": 3.27,
+      "low_pass": 2.875755256,
       "high_pass": 9.16
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "id": "conversion",
-      "low_pass": -0.17,
+      "low_pass": -0.212202069,
       "high_pass": 0.0
     }
   ],

@@ -4,7 +4,7 @@ import re
 
 def add_missing_edges(recreated_cm, main):
     # Extract existing edges from main
-    print("inside add_missing_edges")
+    
     existing_edges = {(edge["start"], edge["end"]) for edge in main["edges"]}
     
     # Extract node IDs from main
@@ -17,6 +17,7 @@ def add_missing_edges(recreated_cm, main):
         # Check if edge is missing but both nodes exist in main
         if (start, end) not in existing_edges and start in main_nodes and end in main_nodes:
             main["edges"].append({"start": start, "end": end})
+            print("inside add_missing_edges", start, end)
     
     return main
 

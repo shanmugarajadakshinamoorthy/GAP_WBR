@@ -12,7 +12,7 @@ causal_mappings = [
     {"source": "AOS_YoY", "destination": "demand_YoY"},
     {"source": "AUR_YoY", "destination": "AOS_YoY"},
     {"source": "UPT_YoY", "destination": "AOS_YoY"},
-    {"source": "AT_demand_contribution_YoY", "destination": "demand_YoY"},
+    {"source": "ATHL_demand_contribution", "destination": "demand_YoY"},
     {"source": "ON_demand_contribution_YoY", "destination": "demand_YoY"},
     {"source": "GAP_demand_contribution_YoY", "destination": "demand_YoY"},
     {"source": "BR_demand_contribution_YoY", "destination": "demand_YoY"}

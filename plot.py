@@ -100,8 +100,8 @@ import networkx as nx
 
 def plot_function(input_folder, output_folder, brand_filter=None):
 
-    print("input_folder:", input_folder)
-    print("output_folder:", output_folder)
+    # print("input_folder:", input_folder)
+    # print("output_folder:", output_folder)
 
     # Ensure the output folder exists
     os.makedirs(output_folder, exist_ok=True)

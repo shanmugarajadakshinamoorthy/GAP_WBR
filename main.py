@@ -4,24 +4,31 @@ import os
 import pandas as pd
 
 from step2_create_fil_CM import process_data
+from step2b_create_updated_CM import fetch_importance_mapper, calculate_degree, suppress_edges
 from step3_CM_to_summary import process_causal_maps
+
 
 # , col_list, brand_selected, input_file_name
 
-def all_brand_summary(year, month, channel, input_file_name , causal_maps_folder,col_list, brand_selected="All"):
+def all_brand_summary(year, month, channel, input_file_name, importance_mapper_file_name , causal_maps_folder,col_list, brand_selected="All", metric_type=""):
     output_dir = "derived"
     derived_folder = "derived"
-    #causal_maps_folder = "causal_maps"
+    # causal_maps_folder = "causal_maps"
     new_cm_folder = "CM_filtered"
     cm_folder = "CM_filtered"
+    cm_suppressed_folder = "CM_filtered_suppressed"
 
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs("summary", exist_ok=True)
     os.makedirs("edited_summary", exist_ok=True)
     os.makedirs(new_cm_folder, exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(cm_suppressed_folder, exist_ok=True)
+
 
     df = pd.read_csv(input_file_name)
+
+    importance_mapper = fetch_importance_mapper(importance_mapper_file_name)
 
     # # filtered_df = df[(df['brand'] == 'Brand A') & (df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')]
     # filtered_df = df[(df['year'] == 2024) & (df['month'] == 9) & (df['channel'] == 'ONL')][['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'price_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']]
@@ -62,13 +69,18 @@ def all_brand_summary(year, month, channel, input_file_name , causal_maps_folder
             input_file = os.path.join(derived_folder, filename)
             kb_file = os.path.join(causal_maps_folder, f"KB_{brand_name}.json")
             output_file = os.path.join(new_cm_folder, f"{brand_name}_causal_map.json")
-
+            suppressed_output_file = os.path.join(cm_suppressed_folder, f"{brand_name}_causal_map_suppressed.json")
             # Load JSON data
             with open(input_file, "r") as file:
                 filtered_df = json.load(file)
 
             # Call process_data function
             output = process_data(filtered_df, kb_file, output_file)
+
+            suppressed_output = suppress_edges(output, filtered_df, importance_mapper, metric_type)
+
+            with open(suppressed_output_file, 'w') as f:
+                json.dump(suppressed_output, f)
 
     # for filename in os.listdir(derived_folder):
     #     if filename.endswith("_filtered_data.json"):

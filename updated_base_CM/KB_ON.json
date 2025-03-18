@@ -2,18 +2,18 @@
   "nodes": [
     {
       "id": "discount",
-      "low_pass": -2.51,
+      "low_pass": -3.423348614,
       "high_pass": -0.87
     },
     {
       "id": "price",
       "low_pass": -2.65,
-      "high_pass": 2.91850324
+      "high_pass": 6.632315575
     },
     {
       "id": "traffic",
       "low_pass": -4.84,
-      "high_pass": 6.19
+      "high_pass": 14.97721746
     },
     {
       "id": "AOS",
@@ -22,8 +22,8 @@
     },
     {
       "id": "UPT",
-      "low_pass": -20.67045187,
-      "high_pass": 6.5
+      "low_pass": 4.21,
+      "high_pass": 45.88674801
     },
     {
       "id": "AUR",
@@ -42,7 +42,7 @@
     },
     {
       "id": "conversion",
-      "low_pass": -0.08,
+      "low_pass": -0.137947523,
       "high_pass": 0.01
     }
   ],

@@ -1,28 +1,80 @@
-### Step-by-Step Execution:
+### **Instruction Set 1**
 
-#### **Instruction Set 1**
+#### **Step 1: List of all nodes mentioned in "edges"**
+Nodes mentioned in edges:  
+- UPT  
+- AOS  
+- traffic  
+- conversion  
+- discount  
+- AUR  
+- demand  
 
-1. **List of all nodes mentioned in "edges" in the knowledge base:**
-   - There are no edges in the <Knowledge Base>, so no nodes are mentioned in "edges."
+#### **Step 2: Group by "end node" and collect the names of all "Start Nodes"**
+Grouped collection of start nodes for each end node:  
+- **AOS**: [UPT]  
+- **conversion**: [traffic]  
+- **AUR**: [discount]  
+- **demand**: [AUR, AOS]  
 
-2. **Group by "end node" and collect the names of all the "Start Node":**
-   - Since there are no edges, there are no groups to form.
+#### **Step 3: Analysis for each group**
 
-3. **For each group in 2 for each "Start Nodes" do the following:**
-   - As there are no edges, this step is skipped.
+##### **Group: AOS**
+- **Start Node Name**: UPT  
+- **Definition**: Units per transaction (UPT) measures the average number of items purchased per transaction.  
+- **Expected Impact**: Higher UPT is expected to increase AOS as more items in a transaction typically result in higher average order size.  
+- **Observed Impact**: UPT increased (+45.9% VS LY), and AOS increased ($1938.0 VS LY $1282.0).  
+- **Do the Expected and Observed impact the same?**: Yes  
+- **Link word**: driven by  
 
-4. **List down all the "nodes_ids" mentioned under *nodes* from the <Knowledge Base>:**
-   - Nodes mentioned: `demand`
-   - Check for incoming or outgoing edges:
-     - `demand` has no incoming or outgoing edges.
+##### **Group: conversion**
+- **Start Node Name**: traffic  
+- **Definition**: Traffic refers to the number of visitors to the platform or store.  
+- **Expected Impact**: Increased traffic is expected to improve conversion rates as more visitors provide more opportunities for sales.  
+- **Observed Impact**: Traffic increased (+15% VS LY), but conversion declined (-0.1% VS LY).  
+- **Do the Expected and Observed impact the same?**: No  
+- **Link word**: despite  
 
-5. **List all nodes without an edge along with its change numbers:**
-   - `demand` is without an edge. Its value is $327.7M (-5% VS LY).
+##### **Group: AUR**
+- **Start Node Name**: discount  
+- **Definition**: Discount refers to the percentage reduction in price offered to customers.  
+- **Expected Impact**: Higher discounts are expected to reduce AUR as lower prices per unit typically result in lower average unit retail.  
+- **Observed Impact**: Discount decreased (-3.4% VS LY), and AUR increased (+0.7% VS LY).  
+- **Do the Expected and Observed impact the same?**: Yes  
+- **Link word**: driven by  
+
+##### **Group: demand**
+- **Start Node Name**: AUR  
+  - **Definition**: Average unit retail (AUR) measures the average price per unit sold.  
+  - **Expected Impact**: Higher AUR is expected to increase demand as higher prices per unit contribute to higher revenue.  
+  - **Observed Impact**: AUR increased (+0.7% VS LY), and demand increased ($86.46M +50.9% VS LY).  
+  - **Do the Expected and Observed impact the same?**: Yes  
+  - **Link word**: driven by  
+
+- **Start Node Name**: AOS  
+  - **Definition**: Average order size (AOS) measures the average revenue per transaction.  
+  - **Expected Impact**: Higher AOS is expected to increase demand as larger transaction sizes contribute to higher revenue.  
+  - **Observed Impact**: AOS increased ($1938.0 VS LY $1282.0), and demand increased ($86.46M +50.9% VS LY).  
+  - **Do the Expected and Observed impact the same?**: Yes  
+  - **Link word**: driven by  
+
+#### **Step 4: Check for incoming or outgoing edges for all nodes**
+- **discount**: Outgoing edge to AUR  
+- **price**: No edges  
+- **traffic**: Outgoing edge to conversion  
+- **AOS**: Incoming edge from UPT; Outgoing edge to demand  
+- **UPT**: Outgoing edge to AOS  
+- **AUR**: Incoming edge from discount; Outgoing edge to demand  
+- **demand**: Incoming edges from AUR and AOS  
+- **conversion**: Incoming edge from traffic  
+
+#### **Step 5: List nodes without edges**
+Nodes without edges:  
+- **price**: 23.8 (+6.6% VS LY)  
 
 ---
 
-#### **Instruction Set 2**
+### **Instruction Set 2**
 
-**Description:**
-
-Demand at $327.7M (-5% VS LY).
+**Description:**  
+Demand increased to $86.46M (+50.9% VS LY), driven by higher AOS ($1938.0 VS LY $1282.0) and higher AUR (+0.7% VS LY). AOS was driven by more UPT (+45.9% VS LY). Conversion declined (-0.1% VS LY) despite higher traffic (+15% VS LY). AUR was driven by lower discount (-3.4% VS LY). Price was 23.8 (+6.6% VS LY).

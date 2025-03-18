@@ -3,17 +3,17 @@
     {
       "id": "discount",
       "low_pass": -7.77,
-      "high_pass": -0.2
+      "high_pass": 36.05524479
     },
     {
       "id": "price",
-      "low_pass": -3.0,
+      "low_pass": -15.19313176,
       "high_pass": 2.23
     },
     {
       "id": "traffic",
-      "low_pass": -10.32421322,
-      "high_pass": -7.0
+      "low_pass": -10.72,
+      "high_pass": -2.119613318
     },
     {
       "id": "AOS",
@@ -23,11 +23,11 @@
     {
       "id": "UPT",
       "low_pass": -3.61,
-      "high_pass": 8.78
+      "high_pass": 17.22639811
     },
     {
       "id": "AUR",
-      "low_pass": -6.310013,
+      "low_pass": -5.17,
       "high_pass": -4.48
     },
     {

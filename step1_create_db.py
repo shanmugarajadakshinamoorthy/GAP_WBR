@@ -26,36 +26,57 @@ def create_causal_map(sub_df, filename, causal_mappings, numeric_cols):
         json.dump(causal_map, f, indent=2)
 
 # Create directory for outputs
-output_dir = "overall"
+output_dir = "causal_maps"
 os.makedirs(output_dir, exist_ok=True)
 
-df = pd.read_csv("overall_data_new_demand.csv")
+df = pd.read_csv("Brand_data_mock.csv")
 
 # Identify numeric columns
 numeric_cols = df.select_dtypes(include=['number']).columns.tolist()
 numeric_cols = [col for col in numeric_cols if "YoY" in col]
 
+# causal_mappings = [
+#     {"source": "discount_YoY", "destination": "demand_YoY"},
+#     # {"source": "traffic_YoY", "destination": "demand_YoY"},
+#     {"source": "AOS_YoY", "destination": "demand_YoY"},
+#     {"source": "AUR_YoY", "destination": "AOS_YoY"},
+#     {"source": "UPT_YoY", "destination": "AOS_YoY"},
+#     {"source": "traffic_YoY", "destination": "conversion_YoY"},
+#     {"source": "orders_YoY", "destination": "conversion_YoY"},
 
+# ]
 causal_mappings = [
-    {"source": "discount_YoY", "destination": "demand_YoY"},
-    {"source": "traffic_YoY", "destination": "demand_YoY"},
+    {"source": "orders_YoY", "destination": "demand_YoY"},
     {"source": "AOS_YoY", "destination": "demand_YoY"},
-    {"source": "AUR_YoY", "destination": "AOS_YoY"},
+    {"source": "AUR_YoY", "destination": "demand_YoY"},
     {"source": "UPT_YoY", "destination": "AOS_YoY"},
-    {"source": "AT_demand_contribution_YoY", "destination": "demand_YoY"},
-    {"source": "ON_demand_contribution_YoY", "destination": "demand_YoY"},
-    {"source": "GAP_demand_contribution_YoY", "destination": "demand_YoY"},
-    {"source": "BR_demand_contribution_YoY", "destination": "demand_YoY"}
-    
+    {"source": "traffic_YoY", "destination": "conversion_YoY"},
+    {"source": "orders_YoY", "destination": "conversion_YoY"},
+    {"source": "discount_YoY", "destination": "AUR_YoY"}
 ]
+for brand in df['brand'].unique():
+    brand_df = df[df['brand'] == brand]
+    brand=brand.replace(" ","_")
+    filename = os.path.join(output_dir, f"KB_{brand}.json")
+    create_causal_map(brand_df, filename, causal_mappings, numeric_cols)
 
+# Create overall causal map
+# overall_filename = os.path.join(output_dir, "KB_overall.json")
+# overall = pd.read_csv(overall_filename)
+# numeric_cols = overall.select_dtypes(include=['number']).columns.tolist()
+# numeric_cols = [col for col in numeric_cols if "YoY" in col]
 
-brand = 'overall'
-filename = os.path.join(output_dir, f"KB_{brand}.json")
-create_causal_map(df, filename, causal_mappings, numeric_cols)
+# causal_mappings = [
+#     {"source": "discount_YoY", "destination": "demand_YoY"},
+#     # {"source": "traffic_YoY", "destination": "demand_YoY"},
+#     {"source": "AOS_YoY", "destination": "demand_YoY"},
+#     {"source": "AUR_YoY", "destination": "AOS_YoY"},
+#     {"source": "UPT_YoY", "destination": "AOS_YoY"},
+#     {"source": "traffic_YoY", "destination": "conversion_YoY"},
+#     {"source": "orders_YoY", "destination": "conversion_YoY"},
 
-
-
+# ]
+# create_causal_map(overall, overall_filename, causal_mappings, numeric_cols)
 
 
 

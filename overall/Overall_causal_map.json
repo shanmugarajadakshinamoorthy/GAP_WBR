@@ -1,37 +1,50 @@
 {
   "nodes": [
     {
+      "id": "conversion",
+      "value": -14.55656825
+    },
+    {
       "id": "demand",
-      "value": -11.00595524
+      "value": 34.38468663
+    },
+    {
+      "id": "ATHL_demand_contribution",
+      "value": -1.663343537
     },
     {
       "id": "BR_demand_contribution",
-      "value": -1.418650396
+      "value": 1.941905181
     },
     {
       "id": "ON_demand_contribution",
-      "value": 3.476491652
+      "value": -2.53642654
     },
     {
       "id": "GAP_demand_contribution",
-      "value": -1.494455096
+      "value": 2.257864897
     }
   ],
   "edges": [
     {
-      "start": "GAP_demand_contribution",
-      "end": "demand",
-      "value": -1.494455096
-    },
-    {
       "start": "BR_demand_contribution",
       "end": "demand",
-      "value": -1.418650396
+      "value": 1.941905181
+    },
+    {
+      "start": "GAP_demand_contribution",
+      "end": "demand",
+      "value": 2.257864897
     },
     {
       "start": "ON_demand_contribution",
       "end": "demand",
-      "value": 3.476491652
+      "value": -2.53642654
+    },
+    {
+      "start": "ATHL_demand_contribution",
+      "end": "demand",
+      "value": -1.663343537
     }
   ]
 }

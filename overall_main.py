@@ -39,8 +39,7 @@ def overall_brand_summary(year, month, channel, input_file_name , causal_maps_fo
 
     filtered_files = [
         filename for filename in os.listdir(derived_folder)
-        if filename.endswith("_filtered_data.json") and (not brand_selected or filename.startswith(brand_selected))
-    ]
+        if filename.endswith("_filtered_data.json") ]
     print("filtered_files:",filtered_files)
     if len(filtered_files) == 0:
         filtered_files = os.listdir(derived_folder)
@@ -54,7 +53,7 @@ def overall_brand_summary(year, month, channel, input_file_name , causal_maps_fo
             input_file = os.path.join(derived_folder, filename)
             kb_file = os.path.join(causal_maps_folder, f"KB_{brand_name}.json")
             output_file = os.path.join(new_cm_folder, f"{brand_name}_causal_map.json")
-
+            
             # Load JSON data
             with open(input_file, "r") as file:
                 filtered_df = json.load(file)

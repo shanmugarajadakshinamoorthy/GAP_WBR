@@ -1,0 +1,1 @@
+{"nodes": [{"id": "AOS", "value": 1439.954515}, {"id": "UPT", "value": 66.10042822}, {"id": "orders", "value": -18.9546929}, {"id": "demand", "value": 28.214233}], "edges": [{"start": "UPT", "end": "AOS", "value": 66.10042822}, {"start": "orders", "end": "demand", "value": -18.9546929}, {"start": "AOS", "end": "demand", "value": 1439.954515}]}

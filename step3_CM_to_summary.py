@@ -187,7 +187,7 @@ Just Follow Instructions one by one."""
             api_version=AZURE_OPENAI_API_VERSION,
             azure_endpoint=AZURE_OPENAI_ENDPOINT
         )
-
+    print("step_0")
     response = client.chat.completions.create(model='pfz-gpt-4o',
         messages=[
             {"role": "system", "content": "You are a summary creator from causal link creator summarizing business performance."},
@@ -199,8 +199,8 @@ Just Follow Instructions one by one."""
     summary = response.choices[0].message.content.replace("YoY", "vs LY")
     
     print('step1')
-    with open("derived/final_summary.txt", "w", encoding="utf-8") as file:
-        file.write(summary)
+    # with open("derived/final_summary.txt", "w", encoding="utf-8") as file:
+    #     file.write(summary)
 
     response = client.chat.completions.create(
         model='pfz-gpt-4o',
@@ -259,8 +259,11 @@ def process_causal_maps(cm_folder, derived_folder, brand_selected="All", destina
     cm_files = {f.split('_causal_map.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map.json')}
     derived_files = {f.split('_filtered_data.json')[0]: os.path.join(derived_folder, f) for f in os.listdir(derived_folder) if f.endswith('_filtered_data.json')}
     
-    common_brands = cm_files.keys() & derived_files.keys()
+    # print('cm_files', cm_files)
+    # print('derived_files', derived_files)
     
+    common_brands = cm_files.keys() & derived_files.keys()
+    print('common_brands', common_brands)
     if brand_selected == "All":
         pass
     else:
