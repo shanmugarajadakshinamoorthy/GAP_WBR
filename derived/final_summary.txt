@@ -1,32 +1,28 @@
-### Step-by-Step Execution
+### Step-by-Step Execution:
 
 #### **Instruction Set 1**
 
-1. **List of all nodes mentioned in "edges" in the knowledge base**  
-   - The "edges" section in the <Knowledge Base> is empty. Therefore, there are no nodes mentioned in "edges."
+1. **List of all nodes mentioned in "edges" in the knowledge base:**
+   - There are no edges in the <Knowledge Base>, so no nodes are mentioned in "edges."
 
-2. **Group by "end node" and collect the names of all the "Start Node"**  
-   - Since there are no edges, there are no groups to form or start nodes to collect.
+2. **Group by "end node" and collect the names of all the "Start Node":**
+   - Since there are no edges, there are no groups to form.
 
-3. **For each group in 2 for each "Start Nodes"**  
-   - As there are no edges or groups, this step is skipped.
+3. **For each group in 2 for each "Start Nodes" do the following:**
+   - As there are no edges, this step is skipped.
 
-4. **List down all the "nodes_ids" mentioned under *nodes* from the <Knowledge Base>. Check for each node and then tell if it has an incoming or outgoing edge.**  
-   - Nodes mentioned under *nodes*: `demand`  
-   - The "demand" node does not have any incoming or outgoing edges.
+4. **List down all the "nodes_ids" mentioned under *nodes* from the <Knowledge Base>:**
+   - Nodes mentioned: `demand`
+   - Check for incoming or outgoing edges:
+     - `demand` has no incoming or outgoing edges.
 
-5. **List all nodes without an edge along with its change numbers in a format seen in the <Example Description>**  
-   - "Demand" is the only node without an edge. Its value is $327.7M (-5% VS LY).
+5. **List all nodes without an edge along with its change numbers:**
+   - `demand` is without an edge. Its value is $327.7M (-5% VS LY).
 
 ---
 
 #### **Instruction Set 2**
 
-Using the outputs from **Instruction Set 1**, produce the description:
+**Description:**
 
-**Description:**  
-Demand at $327.7M (-5% VS LY).  
-
----
-
-This completes the task as per the instructions provided.
+Demand at $327.7M (-5% VS LY).

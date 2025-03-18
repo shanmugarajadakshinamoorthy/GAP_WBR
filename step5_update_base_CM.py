@@ -4,6 +4,7 @@ import re
 
 def add_missing_edges(recreated_cm, main):
     # Extract existing edges from main
+    print("inside add_missing_edges")
     existing_edges = {(edge["start"], edge["end"]) for edge in main["edges"]}
     
     # Extract node IDs from main
@@ -41,7 +42,7 @@ def update_main_json(recreated_path, main_path, filtered_json_path, output_path)
         "Conversion Rate": filtered_json.get("conversion_YoY"),
         "conversion": filtered_json.get("conversion_YoY")  # Matching name in main.json
     }
-    print("filtered_values:", filtered_values)
+    # print("filtered_values:", filtered_values)
     # Extract "start" nodes from recreated edges
     # start_nodes = {edge["start"] for edge in recreated["edges"]}
     start_nodes = {edge["start"] for edge in recreated["edges"]} | {edge["end"] for edge in recreated["edges"]}

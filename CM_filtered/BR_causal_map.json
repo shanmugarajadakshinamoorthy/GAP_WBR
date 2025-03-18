@@ -36,9 +36,9 @@
       "value": -1069.566769
     },
     {
-      "start": "discount",
-      "end": "AUR",
-      "value": -13.61108985
+      "start": "UPT",
+      "end": "AOS",
+      "value": -28.1540095
     },
     {
       "start": "AUR",
@@ -46,9 +46,9 @@
       "value": 4.893336
     },
     {
-      "start": "UPT",
-      "end": "AOS",
-      "value": -28.1540095
+      "start": "discount",
+      "end": "AUR",
+      "value": -13.61108985
     }
   ]
 }

@@ -32,9 +32,9 @@
       "value": -773.986501
     },
     {
-      "start": "orders",
-      "end": "demand",
-      "value": 3.318012456
+      "start": "UPT",
+      "end": "AOS",
+      "value": -20.67045187
     },
     {
       "start": "AUR",
@@ -42,9 +42,9 @@
       "value": 0.246041
     },
     {
-      "start": "UPT",
-      "end": "AOS",
-      "value": -20.67045187
+      "start": "orders",
+      "end": "demand",
+      "value": 3.318012456
     }
   ]
 }

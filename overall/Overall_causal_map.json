@@ -19,6 +19,11 @@
   ],
   "edges": [
     {
+      "start": "GAP_demand_contribution",
+      "end": "demand",
+      "value": -1.494455096
+    },
+    {
       "start": "BR_demand_contribution",
       "end": "demand",
       "value": -1.418650396
@@ -27,11 +32,6 @@
       "start": "ON_demand_contribution",
       "end": "demand",
       "value": 3.476491652
-    },
-    {
-      "start": "GAP_demand_contribution",
-      "end": "demand",
-      "value": -1.494455096
     }
   ]
 }

@@ -6,8 +6,6 @@ autogen
 instructor
 loguru
 pandas
-json
-re
 databricks
 databricks-connect
 AzureOpenAI
@@ -16,3 +14,4 @@ dotenv
 streamlit
 matplotlib
 networkx
+streamlit_option_menu

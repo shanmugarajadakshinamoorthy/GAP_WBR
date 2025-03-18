@@ -68,3 +68,5 @@ def all_brand_edit_summary(brand_filter=None):
 
     # Run the process
     process_causal_maps(recreated_folder, causal_maps_folder, derived_folder, output_folder)
+
+

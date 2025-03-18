@@ -24,14 +24,14 @@
       "value": -2004.48401
     },
     {
-      "start": "AUR",
-      "end": "demand",
-      "value": -6.310013
-    },
-    {
       "start": "UPT",
       "end": "AOS",
       "value": -4.72679071
+    },
+    {
+      "start": "AUR",
+      "end": "demand",
+      "value": -6.310013
     }
   ]
 }

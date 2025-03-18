@@ -3,46 +3,9 @@
   "nodes": [
     {
       "id": "demand",
-      "value": "Demand increased to $220.5M (+28.2% VS LY)",
-      "correct": "True"
-    },
-    {
-      "id": "AOS",
-      "value": "AOS was up ($3814.1 VS LY $2374.0)",
-      "correct": "True"
-    },
-    {
-      "id": "orders",
-      "value": "despite lower orders (-19% VS LY)",
-      "correct": "True"
-    },
-    {
-      "id": "UPT",
-      "value": "driven by more UPT (+66.1% VS LY)",
+      "value": "Demand at $327.7M (-5% VS LY)",
       "correct": "True"
     }
   ],
-  "edges": [
-    {
-      "start": "AOS",
-      "end": "demand",
-      "impact": "positive",
-      "value": "driven by higher AOS ($3814.1 VS LY $2374.0)",
-      "correct": "True"
-    },
-    {
-      "start": "UPT",
-      "end": "AOS",
-      "impact": "positive",
-      "value": "driven by more UPT (+66.1% VS LY)",
-      "correct": "True"
-    },
-    {
-      "start": "orders",
-      "end": "demand",
-      "impact": "negative",
-      "value": "despite lower orders (-19% VS LY)",
-      "correct": "True"
-    }
-  ]
+  "edges": []
 }

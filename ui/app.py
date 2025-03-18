@@ -7,7 +7,6 @@ import streamlit as st
 from backend import read_text_files, return_plot, return_table
 from streamlit_option_menu import option_menu
 
-
 # Get the parent directory of the current file
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
@@ -16,8 +15,9 @@ sys.path.append(parent_dir)
 
 from main import all_brand_summary
 from main2 import all_brand_edit_summary
-from plot import plot_function
 from overall_main import overall_brand_summary
+from plot import plot_function
+
 
 # Function to handle date selection
 def handle_date_change():
@@ -38,7 +38,7 @@ def handle_date_change():
     df=pd.read_csv(input_file_name)
     col_list = ['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']
     causal_maps_folder = "causal_maps"
-    
+
     all_brand_summary(year, month, channel, input_file_name,causal_maps_folder,col_list)
     input_folder = "causal_maps"
     output_folder = "graphs"
@@ -103,6 +103,23 @@ def read_all_json_files(folder="derived"):
         return {}
 
 all_json_data=read_all_json_files()
+def read_overall_edit_summary():
+    # Define the path to the file
+    folder_path = 'overall'
+    file_name = 'Overall_edit_summary.txt'
+    file_path = os.path.join(folder_path, file_name)
+
+    # Read and return the contents of the file
+    try:
+        with open(file_path, 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        return f"File '{file_name}' not found in folder '{folder_path}'."
+    except Exception as e:
+        return f"An error occurred: {e}"
+
+
+markdown=read_overall_edit_summary()
 
 with st.sidebar:
     st.image("ui/assets/gap_logo.png", width=140)
@@ -135,7 +152,7 @@ with col2:
 # with org_level:
 if selected_tab == "WBR Summary":
     st.subheader("Summary")
-    st.markdown("XYZ Solutions is a technology consulting firm specializing in AI-driven automation and digital transformation. We help businesses streamline operations, enhance efficiency, and drive growth with innovative solutions.")
+    st.markdown(markdown)
     st.divider()
     summaries = read_text_files()
     for key,value in summaries.items():
