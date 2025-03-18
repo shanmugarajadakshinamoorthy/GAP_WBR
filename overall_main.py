@@ -27,7 +27,7 @@ def overall_brand_summary(year, month, channel, input_file_name , causal_maps_fo
         try:
             brand_name = row["brand"].replace(" ", "_")
         except:
-            brand_name = "Overall"  # Replace spaces with underscores
+            brand_name = "overall"  # Replace spaces with underscores
         file_name = f"{output_dir}/{brand_name}_filtered_data.json"
 
         with open(file_name, "w") as file:
@@ -86,19 +86,19 @@ def overall_brand_summary(year, month, channel, input_file_name , causal_maps_fo
     # Example usage
     process_causal_maps(cm_folder, derived_folder, brand_selected, 'overall')
 
-year = 2024
-month = 9
-channel = 'ONL'
-brand_selected = "All"
+# year = 2024
+# month = 9
+# channel = 'ONL'
+# brand_selected = "All"
 # brand_selected = "Brand_B"
 # input_file_name = "Brand_data_mock.csv"
 
 # col_list = ['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'price_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']
 # all_brand_summary(year, month, channel, input_file_name, col_list, brand_selected)
 
-input_file_name = "overall_data_new_demand.csv"
-col_list = ['year', 'month', 'channel', 'demand_YoY', 'ATHL_demand_contribution_YoY', 'BR_demand_contribution_YoY', 'ON_demand_contribution_YoY', 'GAP_demand_contribution_YoY']
-overall_brand_summary(year, month, channel, input_file_name,'overall', col_list)
+# input_file_name = "overall_data_new_demand.csv"
+# col_list = ['year', 'month', 'channel', 'demand_YoY', 'ATHL_demand_contribution_YoY', 'BR_demand_contribution_YoY', 'ON_demand_contribution_YoY', 'GAP_demand_contribution_YoY']
+# overall_brand_summary(year, month, channel, input_file_name,'overall', col_list)
 
 
 

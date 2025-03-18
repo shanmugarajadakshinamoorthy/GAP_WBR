@@ -19,6 +19,7 @@ from main2 import all_brand_edit_summary
 from plot import plot_function
 from overall_main import overall_brand_summary
 
+
 # Function to handle date selection
 def handle_date_change():
     selected_date = st.session_state.date_range
@@ -30,15 +31,11 @@ def handle_date_change():
         month=month_names.index(month) + 1
     year = int(year_str)
     channel = 'ONL'
-    input_file_name = 'overall_data_new_demand.csv'
-    col_list = ['year', 'month', 'channel', 'demand_YoY', 'ATHL_demand_contribution_YoY', 'BR_demand_contribution_YoY', 'ON_demand_contribution_YoY', 'GAP_demand_contribution_YoY']
-    overall_brand_summary(year, month, channel, input_file_name,'overall', col_list)
-
     input_file_name = "Brand_data_mock.csv"
     df=pd.read_csv(input_file_name)
     col_list = ['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']
     causal_maps_folder = "causal_maps"
-    
+    overall_brand_summary(year, month, channel, input_file_name,'overall', col_list)
     all_brand_summary(year, month, channel, input_file_name,causal_maps_folder,col_list)
     input_folder = "causal_maps"
     output_folder = "graphs"

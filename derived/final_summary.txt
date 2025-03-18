@@ -1,56 +1,32 @@
-### Step-by-Step Execution:
+### Step-by-Step Execution
 
 #### **Instruction Set 1**
 
-1. **List of all nodes mentioned in "edges":**
-   - `ON_demand_contribution`
-   - `BR_demand_contribution`
-   - `GAP_demand_contribution`
-   - `demand`
+1. **List of all nodes mentioned in "edges" in the knowledge base**  
+   - The "edges" section in the <Knowledge Base> is empty. Therefore, there are no nodes mentioned in "edges."
 
-2. **Group by "end node" and collect the names of all the "start nodes":**
-   - For `demand`: 
-     - Start Nodes: `ON_demand_contribution`, `BR_demand_contribution`, `GAP_demand_contribution`
+2. **Group by "end node" and collect the names of all the "Start Node"**  
+   - Since there are no edges, there are no groups to form or start nodes to collect.
 
-3. **For each group in 2, analyze the start nodes:**
+3. **For each group in 2 for each "Start Nodes"**  
+   - As there are no edges or groups, this step is skipped.
 
-   - **For `ON_demand_contribution`:**
-     - a. Definition: ON
-     - b. Expected impact: ON is expected to positively impact demand as it contributes to overall demand.
-     - c. Observed impact: ON_demand_contribution increased by +0.2% VS LY.
-     - d. Do the Expected and Observed impact the same? Yes
-     - e. Link word: driven by
+4. **List down all the "nodes_ids" mentioned under *nodes* from the <Knowledge Base>. Check for each node and then tell if it has an incoming or outgoing edge.**  
+   - Nodes mentioned under *nodes*: `demand`  
+   - The "demand" node does not have any incoming or outgoing edges.
 
-   - **For `BR_demand_contribution`:**
-     - a. Definition: BR
-     - b. Expected impact: BR is expected to positively impact demand as it contributes to overall demand.
-     - c. Observed impact: BR_demand_contribution decreased by -2.3% VS LY.
-     - d. Do the Expected and Observed impact the same? No
-     - e. Link word: despite
-
-   - **For `GAP_demand_contribution`:**
-     - a. Definition: GAP
-     - b. Expected impact: GAP is expected to positively impact demand as it contributes to overall demand.
-     - c. Observed impact: GAP_demand_contribution decreased by -0.9% VS LY.
-     - d. Do the Expected and Observed impact the same? No
-     - e. Link word: despite
-
-4. **List all nodes under "nodes" and check for edges:**
-   - `conversion`: No incoming or outgoing edge.
-   - `demand`: Has incoming edges from `ON_demand_contribution`, `BR_demand_contribution`, and `GAP_demand_contribution`.
-   - `ATHL_demand_contribution`: No incoming or outgoing edge.
-   - `BR_demand_contribution`: Has an outgoing edge to `demand`.
-   - `ON_demand_contribution`: Has an outgoing edge to `demand`.
-   - `GAP_demand_contribution`: Has an outgoing edge to `demand`.
-
-5. **List all nodes without an edge along with their change numbers:**
-   - `conversion` (+17.3% VS LY)
-   - `ATHL_demand_contribution` (+3% VS LY)
+5. **List all nodes without an edge along with its change numbers in a format seen in the <Example Description>**  
+   - "Demand" is the only node without an edge. Its value is $327.7M (-5% VS LY).
 
 ---
 
 #### **Instruction Set 2**
 
-**Description:**
+Using the outputs from **Instruction Set 1**, produce the description:
 
-Demand at $448.8M (+19.8% VS LY) was driven by ON_demand_contribution (+0.2% VS LY), despite BR_demand_contribution (-2.3% VS LY) and GAP_demand_contribution (-0.9% VS LY). Conversion (+17.3% VS LY) and ATHL_demand_contribution (+3% VS LY).
+**Description:**  
+Demand at $327.7M (-5% VS LY).  
+
+---
+
+This completes the task as per the instructions provided.

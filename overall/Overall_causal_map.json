@@ -1,45 +1,37 @@
 {
   "nodes": [
     {
-      "id": "conversion",
-      "value": 17.34061824
-    },
-    {
       "id": "demand",
-      "value": 19.7817062
-    },
-    {
-      "id": "ATHL_demand_contribution",
-      "value": 3.011491903
+      "value": -11.00595524
     },
     {
       "id": "BR_demand_contribution",
-      "value": -2.307865167
+      "value": -1.418650396
     },
     {
       "id": "ON_demand_contribution",
-      "value": 0.204511828
+      "value": 3.476491652
     },
     {
       "id": "GAP_demand_contribution",
-      "value": -0.908138564
+      "value": -1.494455096
     }
   ],
   "edges": [
     {
-      "start": "ON_demand_contribution",
-      "end": "demand",
-      "value": 0.204511828
-    },
-    {
       "start": "BR_demand_contribution",
       "end": "demand",
-      "value": -2.307865167
+      "value": -1.418650396
+    },
+    {
+      "start": "ON_demand_contribution",
+      "end": "demand",
+      "value": 3.476491652
     },
     {
       "start": "GAP_demand_contribution",
       "end": "demand",
-      "value": -0.908138564
+      "value": -1.494455096
     }
   ]
 }
