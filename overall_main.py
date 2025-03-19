@@ -52,7 +52,7 @@ def overall_brand_summary(year, month, channel, input_file_name , causal_maps_fo
             # Construct file paths
             input_file = os.path.join(derived_folder, filename)
             kb_file = os.path.join(causal_maps_folder, f"KB_{brand_name}.json")
-            output_file = os.path.join(new_cm_folder, f"{brand_name}_causal_map.json")
+            output_file = os.path.join(new_cm_folder, f"{brand_name}_causal_map_suppressed.json")
             
             # Load JSON data
             with open(input_file, "r") as file:

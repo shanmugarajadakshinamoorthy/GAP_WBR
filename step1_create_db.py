@@ -50,8 +50,8 @@ causal_mappings = [
     {"source": "AOS_YoY", "destination": "demand_YoY"},
     {"source": "AUR_YoY", "destination": "demand_YoY"},
     {"source": "UPT_YoY", "destination": "AOS_YoY"},
-    {"source": "traffic_YoY", "destination": "conversion_YoY"},
-    {"source": "orders_YoY", "destination": "conversion_YoY"},
+    {"source": "traffic_YoY", "destination": "orders_YoY"},
+    {"source": "conversion_YoY", "destination": "orders_YoY"},
     {"source": "discount_YoY", "destination": "AUR_YoY"}
 ]
 for brand in df['brand'].unique():

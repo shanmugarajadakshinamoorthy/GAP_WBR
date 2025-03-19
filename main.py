@@ -104,7 +104,7 @@ def all_brand_summary(year, month, channel, input_file_name, importance_mapper_f
 
 
     # Example usage
-    process_causal_maps(cm_folder, derived_folder, brand_selected)
+    process_causal_maps(cm_suppressed_folder, derived_folder, brand_selected)
 
 # year = 2024
 # month = 9

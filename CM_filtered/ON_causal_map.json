@@ -5,10 +5,6 @@
       "value": -3.423348614
     },
     {
-      "id": "price",
-      "value": 6.632315575
-    },
-    {
       "id": "traffic",
       "value": 14.97721746
     },
@@ -35,19 +31,9 @@
   ],
   "edges": [
     {
-      "start": "UPT",
-      "end": "AOS",
-      "value": 45.88674801
-    },
-    {
       "start": "discount",
       "end": "AUR",
       "value": -3.423348614
-    },
-    {
-      "start": "AUR",
-      "end": "demand",
-      "value": 0.704146
     },
     {
       "start": "AOS",
@@ -55,9 +41,14 @@
       "value": 655.785618
     },
     {
-      "start": "traffic",
-      "end": "conversion",
-      "value": 14.97721746
+      "start": "UPT",
+      "end": "AOS",
+      "value": 45.88674801
+    },
+    {
+      "start": "AUR",
+      "end": "demand",
+      "value": 0.704146
     }
   ]
 }

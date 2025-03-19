@@ -21,6 +21,16 @@ def add_missing_edges(recreated_cm, main):
     
     return main
 
+
+def remove_extra_edges(recreated_cm, main):
+    # Extract existing edges from recreated_cm
+    recreated_edges = {(edge["start"], edge["end"]) for edge in recreated_cm["edges"]}
+    
+    # Filter out edges in main that are not present in recreated_cm
+    main["edges"] = [edge for edge in main["edges"] if (edge["start"], edge["end"]) in recreated_edges]
+
+    return main
+
 def update_main_json(recreated_path, main_path, filtered_json_path, output_path):
     # Load the JSON data
     with open(recreated_path) as f:
@@ -31,6 +41,8 @@ def update_main_json(recreated_path, main_path, filtered_json_path, output_path)
         filtered_json = json.load(f)
 
     main = add_missing_edges(recreated, main)
+    main = remove_extra_edges(recreated, main)
+    
     # Create a lookup dictionary for filtered_json values
     filtered_values = {
         "traffic": filtered_json.get("traffic_YoY"),

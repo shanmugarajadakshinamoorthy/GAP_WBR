@@ -199,8 +199,11 @@ Just Follow Instructions one by one."""
     summary = response.choices[0].message.content.replace("YoY", "vs LY")
     
     print('step1')
-    # with open("derived/final_summary.txt", "w", encoding="utf-8") as file:
-    #     file.write(summary)
+    with open(f"summary/{brand}_final_summary.txt", "w", encoding="utf-8") as file:
+        if summary is not None:
+            file.write(summary)
+        else:
+            file.write("")
 
     response = client.chat.completions.create(
         model='pfz-gpt-4o',
@@ -235,11 +238,13 @@ Just Follow Instructions one by one."""
     )
     print('step3')
     correct_summary = correct_summary.choices[0].message.content.replace("YoY", "vs LY")
-    correct_summary = extract_summary(correct_summary)
-
+    correct_summary = extract_summary(correct_summary).replace("_demand_contribution", "")
+    correct_summary = correct_summary.split("```Summary")[-1].split("```")[0].replace("```", "").rstrip("\n").lstrip("\n")
+    
+    
     with open(f"{destination_folder}/{brand}_edit_summary.txt", "w", encoding="utf-8") as file:
-        if summary is not None:
-            file.write(summary)
+        if correct_summary is not None:
+            file.write(correct_summary)
         else:
             file.write("")
 
@@ -247,20 +252,21 @@ Just Follow Instructions one by one."""
     
 
 
-# with open("derived/fil_data_causal_map.json", "r") as file:
+# with open("CM_filtered/ATHL_causal_map.json", "r") as file:
 #     map = json.load(file)
 
-# with open("derived/filtered_df.json", "r") as file:
+# with open("derived/ATHL_filtered_data.json", "r") as file:
 #     filtered_df = json.load(file)
 
-# generate_summary_from_causal_link(map, filtered_df)
+# print(generate_summary_from_causal_link(map, [filtered_df], "ATHL"))
 
 def process_causal_maps(cm_folder, derived_folder, brand_selected="All", destination_folder = None):
-    cm_files = {f.split('_causal_map.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map.json')}
+    # cm_files = {f.split('_causal_map.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map.json')}
+    cm_files = {f.split('_causal_map_suppressed.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map_suppressed.json')}
     derived_files = {f.split('_filtered_data.json')[0]: os.path.join(derived_folder, f) for f in os.listdir(derived_folder) if f.endswith('_filtered_data.json')}
     
-    # print('cm_files', cm_files)
-    # print('derived_files', derived_files)
+    print('cm_files', cm_files)
+    print('derived_files', derived_files)
     
     common_brands = cm_files.keys() & derived_files.keys()
     print('common_brands', common_brands)

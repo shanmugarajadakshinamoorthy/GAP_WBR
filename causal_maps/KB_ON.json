@@ -6,11 +6,6 @@
       "high_pass": -0.87
     },
     {
-      "id": "price",
-      "low_pass": -2.65,
-      "high_pass": -1.35
-    },
-    {
       "id": "traffic",
       "low_pass": -4.84,
       "high_pass": 6.19
@@ -65,11 +60,11 @@
     },
     {
       "start": "traffic",
-      "end": "conversion"
+      "end": "orders"
     },
     {
-      "start": "orders",
-      "end": "conversion"
+      "start": "conversion",
+      "end": "orders"
     },
     {
       "start": "discount",

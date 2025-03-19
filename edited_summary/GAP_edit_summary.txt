@@ -1,1 +1,1 @@
-Demand increased to $84.79M (+24.2% VS LY), driven by a -5.8% decrease in AUR, a +20.5% increase in orders, and an increase in AOS ($6212.59 VS LY $5962.0). AOS increased ($6212.59 VS LY $5962.0), driven by a +17.2% increase in UPT. AUR decreased (-5.8% VS LY), driven by a +36.1% increase in discount. Traffic declined (-2.1% VS LY). Price declined (-15.2% VS LY).
+Demand at $107.3M (-13.7% VS LY) declined despite AOS ($11395.0 VS LY $13399.0) and AUR (-6.3% VS LY) retracting. AOS was down ($11395.0 VS LY $13399.0) driven by lower UPT (-4.7% VS LY).

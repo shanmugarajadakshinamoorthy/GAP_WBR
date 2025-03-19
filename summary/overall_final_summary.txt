@@ -1,0 +1,71 @@
+### Step-by-Step Execution of Instructions
+
+#### **Instruction Set 1**
+
+**1. List of all nodes mentioned in "edges" in the knowledge base:**
+- `GAP_demand_contribution`
+- `BR_demand_contribution`
+- `ON_demand_contribution`
+- `ATHL_demand_contribution`
+- `demand`
+
+---
+
+**2. Group by "end node" and collect the names of all the "Start Nodes":**
+- For `demand`: Start Nodes = [`GAP_demand_contribution`, `BR_demand_contribution`, `ON_demand_contribution`, `ATHL_demand_contribution`]
+
+---
+
+**3. Analysis for each group:**
+
+**Group: `demand`**
+- **Start Node: `GAP_demand_contribution`**
+  - Definition: GAP
+  - Expected impact: GAP is expected to positively contribute to demand due to its increasing demand contribution.
+  - Observed impact: GAP_demand_contribution increased by +2.3% VS LY.
+  - Do the Expected and Observed impact the same? Yes
+  - Link word: driven by
+
+- **Start Node: `BR_demand_contribution`**
+  - Definition: BR
+  - Expected impact: BR is expected to positively contribute to demand due to its increasing demand contribution.
+  - Observed impact: BR_demand_contribution increased by +1.9% VS LY.
+  - Do the Expected and Observed impact the same? Yes
+  - Link word: driven by
+
+- **Start Node: `ON_demand_contribution`**
+  - Definition: ON
+  - Expected impact: ON is expected to positively contribute to demand due to its demand contribution.
+  - Observed impact: ON_demand_contribution decreased by -2.5% VS LY.
+  - Do the Expected and Observed impact the same? No
+  - Link word: despite
+
+- **Start Node: `ATHL_demand_contribution`**
+  - Definition: ATHL
+  - Expected impact: ATHL is expected to positively contribute to demand due to its demand contribution.
+  - Observed impact: ATHL_demand_contribution decreased by -1.7% VS LY.
+  - Do the Expected and Observed impact the same? No
+  - Link word: despite
+
+---
+
+**4. List down all "nodes_ids" mentioned under *nodes* and check for edges:**
+- `conversion`: No incoming or outgoing edge.
+- `demand`: Has incoming edges from `GAP_demand_contribution`, `BR_demand_contribution`, `ON_demand_contribution`, `ATHL_demand_contribution`.
+- `ATHL_demand_contribution`: Has outgoing edge to `demand`.
+- `BR_demand_contribution`: Has outgoing edge to `demand`.
+- `ON_demand_contribution`: Has outgoing edge to `demand`.
+- `GAP_demand_contribution`: Has outgoing edge to `demand`.
+
+---
+
+**5. List all nodes without an edge along with their change numbers:**
+- `conversion`: 0 (-14.6% VS LY)
+
+---
+
+#### **Instruction Set 2**
+
+**Description:**
+
+Demand at $418.4M (+34.4% VS LY) driven by GAP (+2.3% VS LY) and BR (+1.9% VS LY), despite ON (-2.5% VS LY) and ATHL (-1.7% VS LY). Conversion at 0 (-14.6% VS LY).

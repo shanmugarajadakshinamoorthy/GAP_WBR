@@ -32,11 +32,6 @@
       "value": 2.257864897
     },
     {
-      "start": "ATHL_demand_contribution",
-      "end": "demand",
-      "value": -1.663343537
-    },
-    {
       "start": "ON_demand_contribution",
       "end": "demand",
       "value": -2.53642654
@@ -45,6 +40,11 @@
       "start": "BR_demand_contribution",
       "end": "demand",
       "value": 1.941905181
+    },
+    {
+      "start": "ATHL_demand_contribution",
+      "end": "demand",
+      "value": -1.663343537
     }
   ]
 }
