@@ -1,0 +1,24 @@
+### ATHL ###
+Demand at $2.48M (-2.9% VS LY) was driven by lower AOS ($67.64 VS LY $89.0) and lower AUR (-0.8% VS LY). AOS declined ($67.64 VS LY $89.0) driven by lower UPT (-2.3% VS LY). AUR declined (-0.8% VS LY) driven by reduced discount (-2.3% VS LY). Traffic increased (+14.7% VS LY). Conversion declined (-6% VS LY).
+
+### BR ###
+  
+Demand at $1.79M (-0.1% VS LY) was driven by lower AUR (-4.8% VS LY) and fewer orders (-0.2% VS LY). Orders were driven by lower conversion (-2% VS LY) despite higher traffic (+14% VS LY). AUR declined (-4.8% VS LY) driven by higher discounts (+2.2% VS LY). UPT was up (+0.7% VS LY).  
+
+### GAP ###
+  
+Demand at $5.8M (-1.3% VS LY) was driven by lower AOS ($64.15 VS LY $69.0), lower AUR (-1.4% VS LY), and fewer orders (-0.6% VS LY). Orders declined (-0.6% VS LY), driven by lower conversion (-4.8% VS LY) despite higher traffic (+17.2% VS LY). AUR declined (-1.4% VS LY), driven by higher discount (+1.3% VS LY). Conversion declined (-4.8% VS LY). Traffic increased (+17.2% VS LY). Discount increased (+1.3% VS LY).  
+
+### ON ###
+  
+Demand reached $16.93M (+0.2% VS LY), driven by higher orders (+0.8% VS LY) and traffic (+19.5% VS LY), despite declines in AOS ($52.0 VS LY $55.0) and AUR (-1.3% VS LY).  
+
+AOS declined ($52.0 VS LY $55.0), driven by higher UPT (+0.3% VS LY).  
+
+Orders increased (+0.8% VS LY), driven by higher traffic (+19.5% VS LY), despite lower conversion (-9.7% VS LY).  
+
+AUR declined (-1.3% VS LY), driven by higher discounts (+3.1% VS LY).  
+
+### output.txt ###
+
+

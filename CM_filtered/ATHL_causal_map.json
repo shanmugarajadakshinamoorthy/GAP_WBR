@@ -1,55 +1,54 @@
 {
   "nodes": [
     {
+      "id": "discount",
+      "value": -2.2620225
+    },
+    {
       "id": "traffic",
-      "value": 2.875755256
+      "value": 14.7137346
     },
     {
       "id": "AOS",
-      "value": 1439.954515
+      "value": -21.628779
     },
     {
       "id": "UPT",
-      "value": 66.10042822
+      "value": -2.312994668
     },
     {
-      "id": "orders",
-      "value": -18.9546929
+      "id": "AUR",
+      "value": -0.810902
     },
     {
       "id": "demand",
-      "value": 28.214233
+      "value": -2.8546036
     },
     {
       "id": "conversion",
-      "value": -0.212202069
+      "value": -5.99031893
     }
   ],
   "edges": [
     {
-      "start": "traffic",
-      "end": "orders",
-      "value": 2.875755256
+      "start": "AUR",
+      "end": "demand",
+      "value": -0.810902
     },
     {
-      "start": "orders",
-      "end": "demand",
-      "value": -18.9546929
-    },
-    {
-      "start": "AOS",
-      "end": "demand",
-      "value": 1439.954515
+      "start": "discount",
+      "end": "AUR",
+      "value": -2.2620225
     },
     {
       "start": "UPT",
       "end": "AOS",
-      "value": 66.10042822
+      "value": -2.312994668
     },
     {
-      "start": "conversion",
-      "end": "orders",
-      "value": -0.212202069
+      "start": "AOS",
+      "end": "demand",
+      "value": -21.628779
     }
   ]
 }

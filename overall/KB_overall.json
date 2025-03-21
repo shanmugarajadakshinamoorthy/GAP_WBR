@@ -2,33 +2,33 @@
   "nodes": [
     {
       "id": "conversion",
-      "low_pass": -8.16,
-      "high_pass": 2.7
+      "low_pass": -8.37,
+      "high_pass": -3.05
     },
     {
       "id": "demand",
-      "low_pass": -2.26,
-      "high_pass": 7.29
+      "low_pass": -0.98,
+      "high_pass": 0.51
     },
     {
       "id": "ATHL_demand_contribution",
-      "low_pass": -0.77,
-      "high_pass": -0.25
+      "low_pass": -0.78,
+      "high_pass": 0.9
     },
     {
       "id": "BR_demand_contribution",
-      "low_pass": -0.08,
-      "high_pass": 0.16
+      "low_pass": -1.49,
+      "high_pass": 0.12
     },
     {
       "id": "ON_demand_contribution",
-      "low_pass": 0.95,
-      "high_pass": 1.48
+      "low_pass": -0.22,
+      "high_pass": 0.7
     },
     {
       "id": "GAP_demand_contribution",
-      "low_pass": -0.59,
-      "high_pass": -0.42
+      "low_pass": -0.12,
+      "high_pass": 2.16
     }
   ],
   "edges": [

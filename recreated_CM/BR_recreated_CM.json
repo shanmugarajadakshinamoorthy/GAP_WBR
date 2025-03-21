@@ -1,0 +1,96 @@
+
+{
+  "nodes": [
+    {
+      "id": "demand",
+      "value": "Demand at $1.79M (-0.1% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "AUR",
+      "value": "lower AUR (-4.8% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "orders",
+      "value": "fewer orders (-0.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "discount",
+      "value": "higher discounts (+2.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "conversion",
+      "value": "lower conversion (-2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "traffic",
+      "value": "higher traffic (+14% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "UPT",
+      "value": "UPT increased (+0.7% VS LY)",
+      "correct": "True"
+    },
+    {
+      "id": "AOS",
+      "value": "AOS which was up 0.9%",
+      "correct": "True"
+    }
+  ],
+  "edges": [
+    {
+      "start": "AUR",
+      "end": "demand",
+      "impact": "negative",
+      "value": "Demand at $1.79M (-0.1% VS LY) was driven by lower AUR (-4.8% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "orders",
+      "end": "demand",
+      "impact": "negative",
+      "value": "Demand at $1.79M (-0.1% VS LY) was driven by fewer orders (-0.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "discount",
+      "end": "AUR",
+      "impact": "negative",
+      "value": "AUR declined (-4.8% VS LY) driven by higher discounts (+2.2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "conversion",
+      "end": "orders",
+      "impact": "negative",
+      "value": "Orders slightly declined (-0.2% VS LY) driven by lower conversion (-2% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "traffic",
+      "end": "conversion",
+      "impact": "positive",
+      "value": "despite higher traffic (+14% VS LY)",
+      "correct": "True"
+    },
+    {
+      "start": "AOS",
+      "end": "demand",
+      "impact": "positive",
+      "value": "AOS which was up 0.9% affects Demand positively",
+      "correct": "True"
+    },
+    {
+      "start": "UPT",
+      "end": "AOS",
+      "impact": "positive",
+      "value": "UPT increased (+0.7% VS LY)",
+      "correct": "False"
+    }
+  ]
+}

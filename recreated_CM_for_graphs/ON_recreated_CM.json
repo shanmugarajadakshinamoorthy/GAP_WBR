@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {
+      "id": "demand",
+      "value": "Demand at $59.3M (-17.36% vs LY)",
+      "correct": "True"
+    },
+    {
+      "id": "AOS",
+      "value": "AOS ($773 VS LY $1,547)",
+      "correct": "True"
+    },
+    {
+      "id": "AUR",
+      "value": "AUR (+0.25% vs LY)",
+      "correct": "True"
+    }
+  ],
+  "edges": [
+    {
+      "start": "AOS",
+      "end": "demand",
+      "impact": "negative",
+      "value": "driven by a sharp decline in AOS ($773 VS LY $1,547)",
+      "correct": "True"
+    },
+    {
+      "start": "AUR",
+      "end": "demand",
+      "impact": "positive",
+      "value": "despite a slight increase in AUR (+0.25% vs LY)",
+      "correct": "True"
+    }
+  ]
+}

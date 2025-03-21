@@ -62,7 +62,8 @@ def all_brand_edit_summary(brand_filter=None):
             generate_causal_link(content, brand_name)
 
     recreated_folder = "recreated_CM"
-    causal_maps_folder = "causal_maps"
+    # causal_maps_folder = "causal_maps"
+    causal_maps_folder = "updated_base_CM"
     derived_folder = "derived"
     output_folder = "updated_base_CM"
 

@@ -29,6 +29,9 @@ def create_causal_map(sub_df, filename, causal_mappings, numeric_cols):
 output_dir = "causal_maps"
 os.makedirs(output_dir, exist_ok=True)
 
+output_dir2 = "updated_base_CM"
+os.makedirs(output_dir2, exist_ok=True)
+
 df = pd.read_csv("Brand_data_mock.csv")
 
 # Identify numeric columns
@@ -58,6 +61,9 @@ for brand in df['brand'].unique():
     brand_df = df[df['brand'] == brand]
     brand=brand.replace(" ","_")
     filename = os.path.join(output_dir, f"KB_{brand}.json")
+    create_causal_map(brand_df, filename, causal_mappings, numeric_cols)
+
+    filename = os.path.join(output_dir2, f"KB_{brand}.json")
     create_causal_map(brand_df, filename, causal_mappings, numeric_cols)
 
 # Create overall causal map

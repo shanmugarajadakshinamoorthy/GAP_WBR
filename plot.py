@@ -109,8 +109,14 @@ def plot_function(input_folder, output_folder, brand_filter=None):
     # Loop through all JSON files in the input folder
     for filename in os.listdir(input_folder):
         if filename.endswith(".json"):  # Process only JSON files
-            brand_name = filename.replace("KB_", "").replace(".json", "")
+            # brand_name = filename.replace("KB_", "").replace(".json", "")
+            # print("filename:", filename)
+            brand_name = filename.replace("_recreated_CM", "").replace(".json", "")
+            brand_name = brand_name.replace("_causal_map_suppressed", "").replace(".json", "")
+            
+            # brand_name = brand_name if brand_name else brand_name2
 
+            # print("brand_name:", brand_name)
             # Apply brand filter if provided
             if brand_filter and brand_name != brand_filter:
                 continue
@@ -126,7 +132,7 @@ def plot_function(input_folder, output_folder, brand_filter=None):
 
             # Add nodes with attributes
             for node in causal_map.get("nodes", []):
-                G.add_node(node["id"], low_pass=node["low_pass"], high_pass=node["high_pass"])
+                G.add_node(node["id"])#, low_pass=node["low_pass"], high_pass=node["high_pass"])
 
             # Add edges
             for edge in causal_map.get("edges", []):

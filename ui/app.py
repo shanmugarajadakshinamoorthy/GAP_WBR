@@ -37,12 +37,13 @@ def handle_date_change():
     input_file_name = "Brand_data_mock.csv"
     df=pd.read_csv(input_file_name)
     col_list = ['brand', 'year', 'month', 'channel', 'demand_YoY', 'discount_YoY', 'traffic_YoY', 'AOS_YoY', 'UPT_YoY', 'AUR_YoY', 'conversion_YoY']
-    causal_maps_folder = "causal_maps"
+    causal_maps_folder = "updated_base_CM"
     importance_mapper_file_name = "discretizer.pkl"
     # all_brand_summary(year, month, channel, input_file_name,causal_maps_folder,col_list)
     all_brand_summary(year, month, channel, input_file_name,importance_mapper_file_name, causal_maps_folder, col_list)
     
-    input_folder = "causal_maps"
+    # input_folder = "causal_maps"
+    input_folder = 'CM_filtered_suppressed'
     output_folder = "graphs"
     plot_function(input_folder,output_folder)
 
@@ -65,7 +66,8 @@ def handle_brand_change(brand_selected):
     # all_brand_summary(year, month, channel, input_file_name,causal_maps_folder,col_list,brand_selected)
     all_brand_summary(year, month, channel, input_file_name,importance_mapper_file_name, causal_maps_folder, col_list, brand_selected)
     
-    input_folder = causal_maps_folder
+    # input_folder = causal_maps_folder
+    input_folder = 'recreated_CM_for_graphs'
     output_folder = "graphs"
     plot_function(input_folder, output_folder, brand_selected)
 

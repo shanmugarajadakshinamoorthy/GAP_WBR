@@ -1,92 +1,81 @@
-### **Step-by-Step Execution**
+### Step-by-Step Execution of Instructions
+
+#### **Instruction Set 1**
+
+**1. List of all nodes mentioned in "edges":**
+- `AUR`
+- `demand`
+- `discount`
+- `AOS`
+- `UPT`
 
 ---
 
-### **Instruction Set 1**
-
-#### **Step 1: List of all nodes mentioned in "edges"**
-Nodes mentioned in "edges" are:
-- discount
-- AUR
-- traffic
-- orders
-- demand
-- conversion
+**2. Group by "end node" and collect the names of all the "Start Nodes":**
+- `demand`: [`AUR`, `AOS`]
+- `AUR`: [`discount`]
+- `AOS`: [`UPT`]
 
 ---
 
-#### **Step 2: Group by "end node" and collect the names of all "start nodes"**
-Grouped data:
-- **AUR**: [discount]
-- **orders**: [traffic, conversion]
-- **demand**: [orders, AUR]
+**3. For each group in 2, perform the following:**
+
+**Group: `demand`**
+- **Start Node: `AUR`**
+  - a. Definition: Average Unit Retail (AUR)
+  - b. Expected impact: Higher AUR typically leads to lower demand due to increased prices.
+  - c. Observed impact: AUR decreased (-0.8% VS LY), and demand declined (-2.9% VS LY).
+  - d. Do the Expected and Observed impact the same? Yes
+  - e. Link word: driven by
+
+- **Start Node: `AOS`**
+  - a. Definition: Average Order Size (AOS)
+  - b. Expected impact: Higher AOS generally increases demand as larger orders contribute to higher sales.
+  - c. Observed impact: AOS decreased ($67.64 VS LY $89.0), and demand declined (-2.9% VS LY).
+  - d. Do the Expected and Observed impact the same? Yes
+  - e. Link word: driven by
 
 ---
 
-#### **Step 3: Analyze each group**
-
-##### **Group 1: End Node = AUR**
-- **Start Node = discount**
-  - **Definition**: Discount
-  - **Expected Impact**: Higher discounts typically reduce AUR as customers pay less per unit.
-  - **Observed Impact**: AUR decreased (-0.6% VS LY).
-  - **Do Expected and Observed Impact Match?**: Yes
-  - **Link Word**: driven by
+**Group: `AUR`**
+- **Start Node: `discount`**
+  - a. Definition: Discount
+  - b. Expected impact: Higher discounts typically reduce AUR as products are sold at lower prices.
+  - c. Observed impact: Discount decreased (-2.3% VS LY), and AUR declined (-0.8% VS LY).
+  - d. Do the Expected and Observed impact the same? Yes
+  - e. Link word: driven by
 
 ---
 
-##### **Group 2: End Node = orders**
-- **Start Node = traffic**
-  - **Definition**: Traffic
-  - **Expected Impact**: Increased traffic is expected to drive higher orders as more visitors interact with the platform.
-  - **Observed Impact**: Orders increased (+12% VS LY).
-  - **Do Expected and Observed Impact Match?**: Yes
-  - **Link Word**: driven by
-
-- **Start Node = conversion**
-  - **Definition**: Conversion
-  - **Expected Impact**: Higher conversion rates are expected to increase orders as a greater proportion of visitors complete purchases.
-  - **Observed Impact**: Orders increased (+12% VS LY).
-  - **Do Expected and Observed Impact Match?**: Yes
-  - **Link Word**: driven by
+**Group: `AOS`**
+- **Start Node: `UPT`**
+  - a. Definition: Units Per Transaction (UPT)
+  - b. Expected impact: Higher UPT increases AOS as more items are purchased per transaction.
+  - c. Observed impact: UPT decreased (-2.3% VS LY), and AOS declined ($67.64 VS LY $89.0).
+  - d. Do the Expected and Observed impact the same? Yes
+  - e. Link word: driven by
 
 ---
 
-##### **Group 3: End Node = demand**
-- **Start Node = orders**
-  - **Definition**: Orders
-  - **Expected Impact**: Increased orders are expected to drive higher demand as more units are sold.
-  - **Observed Impact**: Demand increased ($228.3M +20.3% VS LY).
-  - **Do Expected and Observed Impact Match?**: Yes
-  - **Link Word**: driven by
-
-- **Start Node = AUR**
-  - **Definition**: AUR
-  - **Expected Impact**: Higher AUR is expected to increase demand as revenue per unit rises.
-  - **Observed Impact**: Demand increased ($228.3M +20.3% VS LY).
-  - **Do Expected and Observed Impact Match?**: No
-  - **Link Word**: despite
+**4. List all nodes under "nodes" and check for incoming or outgoing edges:**
+- `discount`: Outgoing edge to `AUR`
+- `traffic`: No edge
+- `AOS`: Incoming edge from `UPT`, Outgoing edge to `demand`
+- `UPT`: Outgoing edge to `AOS`
+- `AUR`: Incoming edge from `discount`, Outgoing edge to `demand`
+- `demand`: Incoming edges from `AUR` and `AOS`
+- `conversion`: No edge
 
 ---
 
-#### **Step 4: Check for incoming or outgoing edges for all nodes**
-- **discount**: Outgoing edge to AUR
-- **traffic**: Outgoing edge to orders
-- **AUR**: Incoming edge from discount; Outgoing edge to demand
-- **orders**: Incoming edges from traffic and conversion; Outgoing edge to demand
-- **demand**: Incoming edges from orders and AUR
-- **conversion**: Outgoing edge to orders
+**5. List all nodes without an edge along with their change numbers:**
+- `traffic`: 9911552 (+14.7% VS LY)
+- `conversion`: 3.7 (-6% VS LY)
 
 ---
 
-#### **Step 5: List nodes without edges**
-All nodes have edges. No nodes are without edges.
+#### **Instruction Set 2**
 
----
+**Description:**
 
----
-
-### **Instruction Set 2**
-
-#### **Description**
-Demand increased to $228.3M (+20.3% VS LY), driven by higher orders (+12% VS LY) and despite lower AUR (-0.6% VS LY). Orders were up (+12% VS LY), driven by increased traffic (+1.5% VS LY) and improved conversion (+0.1% VS LY). AUR declined (-0.6% VS LY), driven by higher discounts (+4.2% VS LY).
+Demand at $2.48M (-2.9% VS LY) was driven by lower AUR (-0.8% VS LY) and lower AOS ($67.64 VS LY $89.0). AOS was driven by lower UPT (-2.3% VS LY). AUR was driven by reduced discount (-2.3% VS LY). Traffic increased (9911552 +14.7% VS LY). Conversion declined (3.7 -6% VS LY).

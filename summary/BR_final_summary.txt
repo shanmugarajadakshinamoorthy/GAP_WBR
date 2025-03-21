@@ -1,87 +1,104 @@
-### Step-by-Step Execution:
-
-#### **Instruction Set 1**
-
-1. **List of all nodes mentioned in "edges" in the knowledge base:**
-   - Start Nodes: `AUR`, `discount`, `UPT`, `AOS`, `orders`, `traffic`
-   - End Nodes: `demand`, `AUR`, `AOS`, `conversion`
-
-2. **Group by "end node" and collect the names of all the "Start Nodes":**
-   - `demand`: `AUR`, `AOS`, `orders`
-   - `AUR`: `discount`
-   - `AOS`: `UPT`
-   - `conversion`: `orders`, `traffic`
-
-3. **For each group in 2, analyze the causal relationships:**
-
-   **Group: `demand`**
-   - **Start Node: `AUR`**
-     - Definition: Average Unit Retail (AUR)
-     - Expected impact: Higher AUR is expected to increase demand as higher-priced items contribute more to revenue.
-     - Observed impact: AUR increased (+2.5% VS LY), but demand declined (-3.6% VS LY).
-     - Match: No
-     - Link word: despite
-   - **Start Node: `AOS`**
-     - Definition: Average Order Size (AOS)
-     - Expected impact: Higher AOS is expected to increase demand as larger orders contribute more to revenue.
-     - Observed impact: AOS declined ($2875.89 VS LY $3740.0), and demand declined (-3.6% VS LY).
-     - Match: Yes
-     - Link word: driven by
-   - **Start Node: `orders`**
-     - Definition: Total number of orders
-     - Expected impact: Higher orders are expected to increase demand as more transactions contribute to revenue.
-     - Observed impact: Orders increased (+24.1% VS LY), but demand declined (-3.6% VS LY).
-     - Match: No
-     - Link word: despite
-
-   **Group: `AUR`**
-   - **Start Node: `discount`**
-     - Definition: Discount rate
-     - Expected impact: Lower discounts are expected to increase AUR as customers pay closer to full price.
-     - Observed impact: Discount decreased (-6.5% VS LY), and AUR increased (+2.5% VS LY).
-     - Match: Yes
-     - Link word: driven by
-
-   **Group: `AOS`**
-   - **Start Node: `UPT`**
-     - Definition: Units Per Transaction (UPT)
-     - Expected impact: Higher UPT is expected to increase AOS as more items per transaction contribute to larger order sizes.
-     - Observed impact: UPT declined (-25.8% VS LY), and AOS declined ($2875.89 VS LY $3740.0).
-     - Match: Yes
-     - Link word: driven by
-
-   **Group: `conversion`**
-   - **Start Node: `orders`**
-     - Definition: Total number of orders
-     - Expected impact: Higher orders are expected to increase conversion as more transactions indicate better conversion of traffic.
-     - Observed impact: Orders increased (+24.1% VS LY), and conversion increased (+0.4% VS LY).
-     - Match: Yes
-     - Link word: driven by
-   - **Start Node: `traffic`**
-     - Definition: Total website traffic
-     - Expected impact: Higher traffic is expected to increase conversion as more visitors provide more opportunities for transactions.
-     - Observed impact: Traffic declined (-14.2% VS LY), but conversion increased (+0.4% VS LY).
-     - Match: No
-     - Link word: despite
-
-4. **List all nodes and check for incoming or outgoing edges:**
-   - `demand`: Incoming edges from `AUR`, `AOS`, `orders`
-   - `orders`: Outgoing edges to `demand`, `conversion`
-   - `discount`: Outgoing edge to `AUR`
-   - `price`: No edges
-   - `traffic`: Outgoing edge to `conversion`
-   - `AOS`: Incoming edge from `UPT`, Outgoing edge to `demand`
-   - `UPT`: Outgoing edge to `AOS`
-   - `AUR`: Incoming edge from `discount`, Outgoing edge to `demand`
-   - `conversion`: Incoming edges from `orders`, `traffic`
-
-5. **List all nodes without an edge along with their change numbers:**
-   - `price`: $86.67 (-6.5% VS LY)
+### **Step-by-Step Execution**
 
 ---
 
-#### **Instruction Set 2**
+### **Instruction Set 1**
 
-**Description:**
+#### **Step 1: List of all nodes mentioned in "edges"**
+- **Start Nodes**: `AUR`, `discount`, `conversion`, `UPT`, `orders`, `traffic`, `AOS`
+- **End Nodes**: `demand`, `AUR`, `orders`, `AOS`
 
-Demand at $42.6M (-3.6% VS LY) declined despite AUR (+2.5% VS LY) and orders (+24.1% VS LY), driven by AOS ($2875.89 VS LY $3740.0). AUR increased (+2.5% VS LY) driven by lower discounts (-6.5% VS LY). AOS declined ($2875.89 VS LY $3740.0) driven by UPT (-25.8% VS LY). Conversion increased (+0.4% VS LY) driven by orders (+24.1% VS LY) despite traffic (-14.2% VS LY). Price at $86.67 (-6.5% VS LY).
+---
+
+#### **Step 2: Group by "end node" and collect the names of all the "start nodes"**
+- **demand**: `AUR`, `orders`, `AOS`
+- **AUR**: `discount`
+- **orders**: `conversion`, `traffic`
+- **AOS**: `UPT`
+
+---
+
+#### **Step 3: Analyze each group**
+
+##### **Group: demand**
+1. **Start Node: AUR**
+   - a. Definition: Average Unit Retail (AUR)
+   - b. Expected impact: AUR typically has a direct positive impact on demand. Higher AUR leads to higher revenue per unit sold, boosting demand.
+   - c. Observed impact: AUR declined (-4.8% VS LY), which likely contributed to a slight decline in demand (-0.1% VS LY).
+   - d. Match: Yes
+   - e. Link word: "driven by"
+
+2. **Start Node: orders**
+   - a. Definition: Total number of orders
+   - b. Expected impact: Orders directly contribute to demand. More orders lead to higher demand.
+   - c. Observed impact: Orders declined slightly (-0.2% VS LY), which aligns with the slight decline in demand (-0.1% VS LY).
+   - d. Match: Yes
+   - e. Link word: "driven by"
+
+3. **Start Node: AOS**
+   - a. Definition: Average Order Size (AOS)
+   - b. Expected impact: AOS positively impacts demand. Higher AOS means more revenue per order, increasing demand.
+   - c. Observed impact: AOS increased ($104.03 VS LY $103.0), which partially offset the decline in demand (-0.1% VS LY).
+   - d. Match: No
+   - e. Link word: "despite"
+
+---
+
+##### **Group: AUR**
+1. **Start Node: discount**
+   - a. Definition: Discount percentage
+   - b. Expected impact: Higher discounts typically reduce AUR, as products are sold at lower prices.
+   - c. Observed impact: Discount increased (+2.2% VS LY), which aligns with the decline in AUR (-4.8% VS LY).
+   - d. Match: Yes
+   - e. Link word: "driven by"
+
+---
+
+##### **Group: orders**
+1. **Start Node: conversion**
+   - a. Definition: Conversion rate
+   - b. Expected impact: Higher conversion rates lead to more orders, as a greater percentage of visitors make purchases.
+   - c. Observed impact: Conversion declined (-2% VS LY), which aligns with the slight decline in orders (-0.2% VS LY).
+   - d. Match: Yes
+   - e. Link word: "driven by"
+
+2. **Start Node: traffic**
+   - a. Definition: Total website traffic
+   - b. Expected impact: Higher traffic typically leads to more orders, as there are more potential customers.
+   - c. Observed impact: Traffic increased (+14% VS LY), which partially offset the decline in orders (-0.2% VS LY).
+   - d. Match: No
+   - e. Link word: "despite"
+
+---
+
+##### **Group: AOS**
+1. **Start Node: UPT**
+   - a. Definition: Units Per Transaction (UPT)
+   - b. Expected impact: Higher UPT increases AOS, as more items are purchased per order.
+   - c. Observed impact: UPT increased (+0.7% VS LY), which aligns with the increase in AOS ($104.03 VS LY $103.0).
+   - d. Match: Yes
+   - e. Link word: "driven by"
+
+---
+
+#### **Step 4: Check for incoming or outgoing edges for all nodes**
+- **discount**: Outgoing edge to `AUR`
+- **traffic**: Outgoing edge to `orders`
+- **AOS**: Outgoing edge to `demand`
+- **UPT**: Outgoing edge to `AOS`
+- **AUR**: Outgoing edge to `demand`
+- **orders**: Outgoing edge to `demand`
+- **demand**: Incoming edges from `AUR`, `orders`, `AOS`
+- **conversion**: Outgoing edge to `orders`
+
+---
+
+#### **Step 5: List nodes without edges**
+- **Nodes without edges**: None (all nodes have at least one edge)
+
+---
+
+### **Instruction Set 2**
+
+#### **Description**
+Demand at $1.79M (-0.1% VS LY) was driven by lower AUR (-4.8% VS LY) and fewer orders (-0.2% VS LY), despite higher AOS ($104.03 VS LY $103.0). AUR declined (-4.8% VS LY), driven by higher discounts (+2.2% VS LY). Orders declined (-0.2% VS LY), driven by lower conversion (-2% VS LY), despite higher traffic (+14% VS LY). AOS increased ($104.03 VS LY $103.0), driven by higher UPT (+0.7% VS LY).

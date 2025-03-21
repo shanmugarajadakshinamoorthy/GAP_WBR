@@ -47,7 +47,7 @@ def generate_causal_link(summary, brand_name):
     demand
     discount
     traffic
-    order
+    orders
     UPT
     ATV
     AOS

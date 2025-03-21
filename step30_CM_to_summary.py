@@ -1,25 +1,17 @@
-import concurrent.futures
-import json
-import logging
-import os
-import sys
-import time
-
 import openai
 import pandas as pd
+import json
+import os
 from dotenv import load_dotenv
 from openai import AzureOpenAI
-
 load_dotenv(override=True)
 AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
 
-logging.getLogger("streamlit.runtime.scriptrunner_utils").setLevel(logging.ERROR)
+
 # Load JSON data (historic trends)
 import re
-
-
 def extract_summary(text):
     # Define regex patterns for different summary formats
     patterns = [
@@ -33,7 +25,7 @@ def extract_summary(text):
         match = re.search(pattern, text, re.DOTALL)
         if match:
             return match.group(1).strip()
-
+    
     return None
 
 # def extract_summary(text):
@@ -67,9 +59,9 @@ def generate_summary_from_causal_link(summary, filtered_df, brand, destination_f
             curr = round(float(filtered_df[0][node["id"]]),0)
             last = round(float(filtered_df[0][node["id"]+"_LY"]),0)
             temp["change"] = f"""${curr} VS LY ${last}"""
-
+        
         graph["nodes"].append(temp)
-
+    
     if not found_demand:
         temp = {}
         temp = {"id":"demand"}
@@ -146,7 +138,7 @@ Demand at 59.3M (+4.3% vs LY) with the launch of SleekTech Activewear and promot
 
 
 Just Follow Instructions one by one."""
-
+    
     extraction_prompt = """Extract only the final description exactly from the input.
 
     INPUT
@@ -165,10 +157,10 @@ Just Follow Instructions one by one."""
     Checks:
     - Change in all metrics should be represented by comparing "VS LY"
     - The change number must be under a bracket in this format (%change VS LY) or ($ThisYear VS LY $LastYear). This is very important.
-    - The %change or $Change value must be inside the bracket like
+    - The %change or $Change value must be inside the bracket like 
        a. For AOS : ""($213 VS LY $245)
-       b. For Other Metrics: ""(+5% VS LY)""
-
+       b. For Other Metrics: ""(+5% VS LY)"" 
+       
     - Change any repeating % numbers or $ numbers like
        a. For AOS: ""$514 ($514 VS LY $413)"" to ""($514 VS LY $413)"".
        b. For Other Metrics: ""4% (+4% VS LY)"" to ""(+4% VS LY)"".
@@ -203,9 +195,9 @@ Just Follow Instructions one by one."""
         ],
         temperature = 0.1
     )
-
+    
     summary = response.choices[0].message.content.replace("YoY", "vs LY")
-
+    
     print('step1')
     with open(f"summary/{brand}_final_summary.txt", "w", encoding="utf-8") as file:
         if summary is not None:
@@ -221,7 +213,7 @@ Just Follow Instructions one by one."""
         ],
         temperature = 0.1
     )
-
+    
     summary = response.choices[0].message.content.replace("YoY", "vs LY")
     print('step2')
     # # print(filtered_df)
@@ -233,7 +225,7 @@ Just Follow Instructions one by one."""
     #         filtered_df_trim.update({key["id"]+"_LY":filtered_df[0][key["id"]+"_LY"]})
     #     if key["id"]+"_YoY" in filtered_df[0]:
     #         filtered_df_trim.update({key["id"]+"_YoY":filtered_df[0][key["id"]+"_YoY"]})
-
+    
     # print(filtered_df_trim)
 
     correct_summary = response = client.chat.completions.create(
@@ -248,8 +240,8 @@ Just Follow Instructions one by one."""
     correct_summary = correct_summary.choices[0].message.content.replace("YoY", "vs LY")
     correct_summary = extract_summary(correct_summary).replace("_demand_contribution", "")
     correct_summary = correct_summary.split("```Summary")[-1].split("```")[0].replace("```", "").rstrip("\n").lstrip("\n")
-
-
+    
+    
     with open(f"{destination_folder}/{brand}_edit_summary.txt", "w", encoding="utf-8") as file:
         if correct_summary is not None:
             file.write(correct_summary)
@@ -257,26 +249,8 @@ Just Follow Instructions one by one."""
             file.write("")
 
     print(f"summary saved successfully for {brand}")
+    
 
-
-def process_brand(cm_files,derived_files,destination_folder,brand):
-    cm_file_path = cm_files[brand]
-    derived_file_path = derived_files[brand]
-
-    # Load JSON files
-    with open(cm_file_path, 'r') as cm_file:
-        causal_map = json.load(cm_file)
-
-    with open(derived_file_path, 'r') as derived_file:
-        filtered_df = json.load(derived_file)
-
-    # Generate summary
-    if destination_folder is None:
-        print("We  are running it")
-        generate_summary_from_causal_link(causal_map, [filtered_df], brand)
-    else:
-        print("We  are running it")
-        generate_summary_from_causal_link(causal_map, [filtered_df], brand, 'overall')
 
 # with open("CM_filtered/ATHL_causal_map.json", "r") as file:
 #     map = json.load(file)
@@ -290,10 +264,10 @@ def process_causal_maps(cm_folder, derived_folder, brand_selected="All", destina
     # cm_files = {f.split('_causal_map.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map.json')}
     cm_files = {f.split('_causal_map_suppressed.json')[0]: os.path.join(cm_folder, f) for f in os.listdir(cm_folder) if f.endswith('_causal_map_suppressed.json')}
     derived_files = {f.split('_filtered_data.json')[0]: os.path.join(derived_folder, f) for f in os.listdir(derived_folder) if f.endswith('_filtered_data.json')}
-
-    print('cm_files', cm_files)
-    print('derived_files', derived_files)
-
+    
+    # print('cm_files', cm_files)
+    # print('derived_files', derived_files)
+    
     common_brands = cm_files.keys() & derived_files.keys()
     print('common_brands', common_brands)
     if brand_selected == "All":
@@ -301,33 +275,19 @@ def process_causal_maps(cm_folder, derived_folder, brand_selected="All", destina
     else:
         common_brands = {brand_selected}
 
-    start_time = time.time()
-    # for brand in common_brands:
-    #     cm_file_path = cm_files[brand]
-    #     derived_file_path = derived_files[brand]
+    for brand in common_brands:
+        cm_file_path = cm_files[brand]
+        derived_file_path = derived_files[brand]
 
 
 
-    #     with open(cm_file_path, 'r') as cm_file:
-    #         causal_map = json.load(cm_file)
-
-    #     with open(derived_file_path, 'r') as derived_file:
-    #         filtered_df = json.load(derived_file)
-
-    #     if destination_folder is None:
-    #         generate_summary_from_causal_link(causal_map, [filtered_df], brand)
-    #     else:
-    #         generate_summary_from_causal_link(causal_map, [filtered_df], brand, 'overall')
-    # end_time = time.time()
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        futures = [executor.submit(process_brand, cm_files,derived_files,destination_folder,brand) for brand in common_brands]
-        # Track progress in Streamlit
-        for future in concurrent.futures.as_completed(futures):
-            try:
-                future.result()  # This will raise exceptions if any
-                print("✅ Completed a brand processing task!")
-            except Exception as e:
-                print(f"❌ Error in processing: {e}")
-    end_time = time.time()
-    time_taken=end_time - start_time
-    print(f"Time taken by the above code is: {time_taken}")
+        with open(cm_file_path, 'r') as cm_file:
+            causal_map = json.load(cm_file)
+        
+        with open(derived_file_path, 'r') as derived_file:
+            filtered_df = json.load(derived_file)
+        
+        if destination_folder is None:
+            generate_summary_from_causal_link(causal_map, [filtered_df], brand)
+        else:
+            generate_summary_from_causal_link(causal_map, [filtered_df], brand, 'overall')

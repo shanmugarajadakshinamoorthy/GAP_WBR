@@ -1,66 +1,94 @@
-### Step-by-Step Execution:
+### Step-by-Step Execution of Instructions Set 1
 
-#### **Instruction Set 1**
+#### 1. List of all nodes mentioned in "edges":
+Nodes mentioned in edges are:  
+- AUR  
+- demand  
+- discount  
+- conversion  
+- orders  
+- UPT  
+- traffic  
+- AOS  
 
-1. **List of all nodes mentioned in "edges" in the knowledge base:**
-   - `UPT`
-   - `AOS`
-   - `orders`
-   - `demand`
-   - `conversion`
+#### 2. Group by "end node" and collect the names of all "start nodes":
+Grouping by "end node" and collecting "start nodes":  
+- **demand**: [AUR, orders, AOS]  
+- **AUR**: [discount]  
+- **orders**: [conversion, traffic]  
+- **AOS**: [UPT]  
 
-2. **Group by "end node" and collect the names of all the "Start Node":**
-   - `AOS`: Start Node = `UPT`
-   - `demand`: Start Nodes = `AOS`, `orders`
-   - `conversion`: Start Node = `orders`
+#### 3. Analysis for each group:
 
-3. **For each group in 2, analyze the Start Nodes:**
+##### **End Node: demand**
+- **Start Node: AUR**  
+  a. Definition: Average Unit Retail (AUR).  
+  b. Expected impact: Higher AUR typically increases demand as it reflects higher perceived value of products.  
+  c. Observed impact: AUR declined (-1.3% VS LY), yet demand increased (+0.2% VS LY).  
+  d. Do the Expected and Observed impact match? No.  
+  e. Link word: despite.  
 
-   - **End Node: AOS**
-     - **Start Node: UPT**
-       - a. Definition: Units per Transaction (UPT).
-       - b. Expected impact: Higher UPT is expected to increase AOS as customers buy more items per transaction.
-       - c. Observed impact: UPT increased by +1.6% VS LY, and AOS slightly declined ($2140.24 VS LY $2145.0).
-       - d. Do the Expected and Observed impact match? No.
-       - e. Link word: despite.
+- **Start Node: orders**  
+  a. Definition: Total number of orders.  
+  b. Expected impact: Higher orders directly increase demand as more transactions occur.  
+  c. Observed impact: Orders increased (+0.8% VS LY), and demand increased (+0.2% VS LY).  
+  d. Do the Expected and Observed impact match? Yes.  
+  e. Link word: driven by.  
 
-   - **End Node: demand**
-     - **Start Node: AOS**
-       - a. Definition: Average Order Size (AOS).
-       - b. Expected impact: Higher AOS is expected to increase demand as larger order sizes contribute to higher revenue.
-       - c. Observed impact: AOS slightly declined ($2140.24 VS LY $2145.0), but demand increased by $94.99M (+14.9% VS LY).
-       - d. Do the Expected and Observed impact match? No.
-       - e. Link word: despite.
-     - **Start Node: orders**
-       - a. Definition: Total number of orders.
-       - b. Expected impact: Higher orders are expected to increase demand as more transactions contribute to higher revenue.
-       - c. Observed impact: Orders increased by +14.7% VS LY, and demand increased by $94.99M (+14.9% VS LY).
-       - d. Do the Expected and Observed impact match? Yes.
-       - e. Link word: driven by.
+- **Start Node: AOS**  
+  a. Definition: Average Order Size (AOS).  
+  b. Expected impact: Higher AOS increases demand as larger orders contribute more revenue.  
+  c. Observed impact: AOS declined ($51.78 VS LY $55.0), yet demand increased (+0.2% VS LY).  
+  d. Do the Expected and Observed impact match? No.  
+  e. Link word: despite.  
 
-   - **End Node: conversion**
-     - **Start Node: orders**
-       - a. Definition: Total number of orders.
-       - b. Expected impact: Higher orders are expected to increase conversion as more transactions indicate better conversion rates.
-       - c. Observed impact: Orders increased by +14.7% VS LY, and conversion increased by +0.2% VS LY.
-       - d. Do the Expected and Observed impact match? Yes.
-       - e. Link word: driven by.
+##### **End Node: AUR**
+- **Start Node: discount**  
+  a. Definition: Discount percentage.  
+  b. Expected impact: Higher discounts typically reduce AUR as products are sold at lower prices.  
+  c. Observed impact: Discount increased (+3.1% VS LY), and AUR declined (-1.3% VS LY).  
+  d. Do the Expected and Observed impact match? Yes.  
+  e. Link word: driven by.  
 
-4. **List all nodes under "nodes" and check for incoming or outgoing edges:**
-   - `discount`: No incoming or outgoing edge.
-   - `AOS`: Incoming edge from `UPT`, outgoing edge to `demand`.
-   - `UPT`: Outgoing edge to `AOS`.
-   - `orders`: Outgoing edges to `demand` and `conversion`.
-   - `demand`: Incoming edges from `AOS` and `orders`.
-   - `conversion`: Incoming edge from `orders`.
+##### **End Node: orders**
+- **Start Node: conversion**  
+  a. Definition: Conversion rate.  
+  b. Expected impact: Higher conversion rates increase orders as more visitors complete purchases.  
+  c. Observed impact: Conversion declined (-9.7% VS LY), yet orders increased (+0.8% VS LY).  
+  d. Do the Expected and Observed impact match? No.  
+  e. Link word: despite.  
 
-5. **List all nodes without an edge along with their change numbers:**
-   - `discount`: 0.52 (+3.5% VS LY).
+- **Start Node: traffic**  
+  a. Definition: Total website traffic.  
+  b. Expected impact: Higher traffic increases orders as more visitors interact with the site.  
+  c. Observed impact: Traffic increased (+19.5% VS LY), and orders increased (+0.8% VS LY).  
+  d. Do the Expected and Observed impact match? Yes.  
+  e. Link word: driven by.  
+
+##### **End Node: AOS**
+- **Start Node: UPT**  
+  a. Definition: Units Per Transaction (UPT).  
+  b. Expected impact: Higher UPT increases AOS as more items are purchased per order.  
+  c. Observed impact: UPT increased (+0.3% VS LY), yet AOS declined ($51.78 VS LY $55.0).  
+  d. Do the Expected and Observed impact match? No.  
+  e. Link word: despite.  
+
+#### 4. List all nodes under "nodes" and check for edges:
+Nodes under "nodes":  
+- **discount**: Outgoing edge to AUR.  
+- **traffic**: Outgoing edge to orders.  
+- **AOS**: Outgoing edge to demand.  
+- **UPT**: Outgoing edge to AOS.  
+- **AUR**: Outgoing edge to demand.  
+- **orders**: Outgoing edge to demand.  
+- **demand**: Incoming edges from AUR, orders, AOS.  
+- **conversion**: Outgoing edge to orders.  
+
+#### 5. Nodes without edges:
+All nodes have edges. No nodes are without edges.
 
 ---
 
-#### **Instruction Set 2**
+### Instructions Set 2: Description
 
-**Description:**
-
-Demand at $94.99M (+14.9% VS LY) was driven by higher orders (+14.7% VS LY) despite a slight decline in AOS ($2140.24 VS LY $2145.0). AOS declined ($2140.24 VS LY $2145.0) despite higher UPT (+1.6% VS LY). Conversion (+0.2% VS LY) was driven by higher orders (+14.7% VS LY). Discount was at 0.52 (+3.5% VS LY).
+Demand at $16.9M (+0.2% VS LY) despite lower AUR (-1.3% VS LY) and AOS ($51.78 VS LY $55.0), driven by higher orders (+0.8% VS LY). Orders were driven by increased traffic (+19.5% VS LY) despite lower conversion (-9.7% VS LY). AOS declined despite higher UPT (+0.3% VS LY). AUR declined driven by higher discounts (+3.1% VS LY).
